@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>How to profile your R code that calls C/C&#43;&#43;  &middot; Seth Russell</title>
+        <meta name="description" content="When profiling R code, the details and performance of any C/C&#43;&#43; code is hidden behind .Call(). This post describes how to get details on what the C/C&#43;&#43; code is doing.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.49" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="How to profile your R code that calls C/C&#43;&#43; ">
+<meta property="og:description" content="When profiling R code, the details and performance of any C/C&#43;&#43; code is hidden behind .Call(). This post describes how to get details on what the C/C&#43;&#43; code is doing.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/2018/10/04/2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus/">
+        <link rel="stylesheet" href="/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="/css/github.css" rel="stylesheet" id="theme-stylesheet">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+        
+    </head>
+    <body>
+        
+<script type="application/javascript">
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-127048637-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Seth Russell" href="/">Seth Russell</a>
+                            </h1>
+                        
+                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/magic__lantern">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/magic-lantern">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/seth-russell">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">How to profile your R code that calls C/C&#43;&#43; </h1>
+    
+        <p class="post-description" itemprop="description">When profiling R code, the details and performance of any C/C&#43;&#43; code is hidden behind .Call(). This post describes how to get details on what the C/C&#43;&#43; code is doing.</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2018-10-04" itemprop="datePublished">Thu, Oct 4, 2018</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="#" itemprop="url" rel="author">Seth Russell</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<p>While there are many options for profiling C++ (or other compiled code) on Linux, many of those tools are difficult to get working correctly with R. Additionally, profiling R code with C++ is complicated due to different settings between various commonly use OSes. While there are some blog posts and presentation materials available on the Internet, many miss important steps that take some effort to determine the correct solution to resolve.</p>
+
+<h2 id="steps-to-profile-c-code-being-called-by-r-code-on-macos-using-xcode-s-instruments">Steps to profile C++ code being called by R code on macOS using Xcode’s Instruments</h2>
+
+<p>macOS users can use Xcode (freely available) for profiling of R code that calls C++ code. As Xcode has a nice GUI, it may be the preferred tool for many users. The primary profiling tool in Xcode is called <a href="https://help.apple.com/instruments/mac/10.0/#/dev7b09c84f5">Instruments</a>.</p>
+
+<p>Here are some basic steps to get it working:</p>
+
+<ol>
+<li>Configure compilation to enable debugging. In GCC and CLANG this can be accomplished by adding ‘-g’ to your compiler flags via Makevars. Depending on your other compiler settings you may also want to add -O0, though changing optimization levels may alter any gains achieved through profiling.</li>
+<li>Determine what you want to profile. <em>The code you run needs to last sufficiently long to allow for application switching and to gather sufficient data via profiling.</em></li>
+
+<li><p>Create a script to run the code you are interested in. Here is an example of running PCCC with an input dataset of 100000 rows:</p>
+
+<pre><code class="language-r">library(pccc)
+icd10_large &lt;- feather::read_feather(&quot;../icd_file_generator/icd10_sample_large.feather&quot;)
+icd10_large &lt;- icd10_large[1:100000, c(1:45)]
+
+ccc(icd10_large[1:100000, c(1:45)], # get id, dx, and pc columns
+    id      = id,
+    dx_cols = dplyr::starts_with(&quot;dx&quot;),
+    pc_cols = dplyr::starts_with(&quot;pc&quot;),
+    icdv    = 10)
+</code></pre></li>
+
+<li><p>Prep Instruments by selecting ‘Time Profiler’ and then identifying the necessary process. If running script via RStudio, you will need to observe the rsession process. If running via command line R, the process is R. Alternatively run Instruments with “Allocations” to see memory allocations</p></li>
+
+<li><p>Start profiling.</p></li>
+
+<li><p>Start your script in what ever fashion you normally run R scripts.</p></li>
+
+<li><p>After you have gathered sufficient data (perhaps 30 seconds to 1 minute), stop the profiling process.</p></li>
+
+<li><p>Find your custom function calls in the symbol tree. There will likely be many layers before your code is called. The call just before your code will be “do_dotcall” The symbol tree should show your custom function names and how long each took.</p></li>
+</ol>
+
+<p>Xcode Instruments screenshot showing C++ code from <a href="https://cran.r-project.org/package=pccc">PCCC</a> R package
+<img src="https://github.com/magic-lantern/SoftwareEngineeringPrinciples/raw/master/paper/instruments_screenshot.png" alt="Xcode Instruments screenshot showing C++ code from PCCC R package" title="Xcode Instruments screenshot showing C++ code from PCCC R package" /></p>
+
+<p><img src="/post/2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus_files/instruments_screenshot.png" alt="Xcode Instruments screenshot showing profiling of R code that calls C/C++" /></p>
+
+<p>For users on Windows, the GPL licensed <a href="http://www.codersnotes.com/sleepy/">Very Sleepy</a> is an excellent GUI profilier that works almost identically to Xcode Instruments for CPU Profiling.</p>
+
+<h2 id="steps-to-profile-c-code-via-command-line-on-macos-and-linux-using-gperftools">Steps to profile C++ code via command line on macOS and Linux using gperftools</h2>
+
+<p>To profile R code that calls C++ code via command line tools requires calling the correct R binary as well as setting up correct environment variables in a OS specific fashion.</p>
+
+<ol>
+<li>Follow steps 1 – 3 as shown above.</li>
+
+<li><p>Identify location of R binary. By default ‘R’ is actually a batch shell script that launches the R binary. You cannot get the desired profiling informaiton about your code from profiling a shell script.</p>
+
+<ol>
+<li>For macOS, using R installed via Homebrew, the actual R binary is located at <code>/usr/local/Cellar/r/3.5.1/lib/R/bin/exec/R</code></li>
+<li>For Linux users, the R binary is likely located at <code>/usr/lib/R/bin/exec/R</code></li>
+</ol></li>
+
+<li><p>Set (or verify) your R_HOME environment variable.</p>
+
+<ol>
+<li>For macOS, using R installed via Homebrew, the R_HOME is <code>/usr/local/Cellar/r/3.5.1/lib/R</code></li>
+<li>For Linux users, the R binary is likely located at <code>/usr/lib/R/bin/exec/R</code></li>
+</ol>
+
+<p>If your environment variable is not set, set R_HOME via a command like (replace path with your actual R Home location). If you use bash, the command is:</p>
+
+<pre><code class="language-bash">export R_HOME=/usr/lib/R/bin/exec/R
+</code></pre></li>
+
+<li><p>Run your test (<em>in this example it is called profile_sample.R</em>) script with the perftools libraries loaded and an environment variable CPUPROFILE that specifies the location to save the CPU profile output. Replace libprofiler path and file name with your actual filename. Replace R binary with your actual R binary with full path.</p>
+
+<ol>
+<li><p>For macOS, this is accomplished via the command <code>DYLD_INSERT_LIBRARIES=/usr/local/lib/libprofiler.dylib CPUPROFILE=sample.profile /usr/local/Cellar/r/3.5.1/lib/R/bin/exec/R -f profile_sample.R</code></p></li>
+
+<li><p>For Linux, this is accomplished via the command <code>LD_PRELOAD=/usr/lib/libprofiler.so CPUPROFILE=sample.profile /usr/lib/R/bin/exec/R -f profile_sample.R</code></p></li>
+</ol></li>
+
+<li><p>View the results via pprof; again, ensure you use your actual R binary path.</p>
+
+<ol>
+<li>For macOS, this is accomplished via the command <code>pprof --text /usr/local/Cellar/r/3.5.1/lib/R/bin/exec/R sample.profile</code></li>
+<li>For Linux, this is accomplished via (Debian based distributions may call pprof ‘google-pprof’) the command <code>pprof --text /usr/bin/R ./sample.profile</code></li>
+</ol>
+
+<p>Output will be something similar to the following:</p>
+
+<pre><code>Using local file /usr/bin/R.
+Using local file ./sample.profile.
+Total: 7399 samples
+    2252  30.4%  30.4%     2252  30.4% __nss_passwd_lookup
+    2172  29.4%  59.8%     4389  59.3% std::__cxx11::basic_string::compare
+    982  13.3%  73.1%     5594  75.6% codes::find_match
+    591   8.0%  81.1%      621   8.4% Rf_mkCharLenCE
+    462   6.2%  87.3%      482   6.5% R_BadLongVector
+    223   3.0%  90.3%      223   3.0% std::vector::operator[] (inline)
+    151   2.0%  92.4%      151   2.0% std::__once_callable
+     98   1.3%  93.7%       98   1.3% SET_STRING_ELT
+     83   1.1%  94.8%       83   1.1% _init@6750
+     30   0.4%  95.2%      452   6.1% Rf_allocVector3
+</code></pre></li>
+</ol>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/optimization/">optimization</a>, 
+            
+                <a href="/tags/profiling/">profiling</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=How%20to%20profile%20your%20R%20code%20that%20calls%20C%2fC%2b%2b%20&url=%2f2018%2f10%2f04%2f2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2f2018%2f10%2f04%2f2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2f2018%2f10%2f04%2f2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=How%20to%20profile%20your%20R%20code%20that%20calls%20C%2fC%2b%2b%20&url=%2f2018%2f10%2f04%2f2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus%2f&summary=When%20profiling%20R%20code%2c%20the%20details%20and%20performance%20of%20any%20C%2fC%2b%2b%20code%20is%20hidden%20behind%20.Call%28%29.%20This%20post%20describes%20how%20to%20get%20details%20on%20what%20the%20C%2fC%2b%2b%20code%20is%20doing."
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Seth Russell" href="/">Seth Russell</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2018 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
+

@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Seth Russell</copyright>
-    <lastBuildDate>Wed, 03 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 04 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Optimization</title>
       <link>/tags/optimization/</link>
-      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/optimization/</guid>
       <description></description>
@@ -24,7 +24,7 @@
     <item>
       <title>Profiling</title>
       <link>/tags/profiling/</link>
-      <pubDate>Wed, 03 Oct 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/profiling/</guid>
       <description></description>
