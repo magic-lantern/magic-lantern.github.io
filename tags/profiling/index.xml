@@ -56,8 +56,7 @@ ccc(icd10_large[1:100000, c(1:45)], # get id, dx, and pc columns
 &lt;li&gt;&lt;p&gt;Find your custom function calls in the symbol tree. There will likely be many layers before your code is called. The call just before your code will be “do_dotcall” The symbol tree should show your custom function names and how long each took.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Xcode Instruments screenshot showing C++ code from &lt;a href=&#34;https://cran.r-project.org/package=pccc&#34;&gt;PCCC&lt;/a&gt; R package
-&lt;img src=&#34;https://github.com/magic-lantern/SoftwareEngineeringPrinciples/raw/master/paper/instruments_screenshot.png&#34; alt=&#34;Xcode Instruments screenshot showing C++ code from PCCC R package&#34; title=&#34;Xcode Instruments screenshot showing C++ code from PCCC R package&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Xcode Instruments screenshot showing C++ code from &lt;a href=&#34;https://cran.r-project.org/package=pccc&#34;&gt;PCCC&lt;/a&gt; R package&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;/post/2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus_files/instruments_screenshot.png&#34; alt=&#34;Xcode Instruments screenshot showing profiling of R code that calls C/C++&#34; /&gt;&lt;/p&gt;
 
