@@ -7,17 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 04 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 05 Oct 2018 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>How to profile your R code that calls C/C&#43;&#43; </title>
-      <link>/2018/10/04/2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus/</link>
-      <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
+      <link>/2018/10/05/2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus/</link>
+      <pubDate>Fri, 05 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/10/04/2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus/</guid>
+      <guid>/2018/10/05/2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus/</guid>
       <description>
 
 &lt;p&gt;While there are many options for profiling C++ (or other compiled code) on Linux, many of those tools are difficult to get working correctly with R. Additionally, profiling R code with C++ is complicated due to different settings between various commonly use OSes. While there are some blog posts and presentation materials available on the Internet, many miss important steps that take some effort to determine the correct solution to resolve.&lt;/p&gt;
@@ -58,7 +58,7 @@ ccc(icd10_large[1:100000, c(1:45)], # get id, dx, and pc columns
 
 &lt;p&gt;Xcode Instruments screenshot showing C++ code from &lt;a href=&#34;https://cran.r-project.org/package=pccc&#34;&gt;PCCC&lt;/a&gt; R package&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/post/2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus_files/instruments_screenshot.png&#34; alt=&#34;Xcode Instruments screenshot showing profiling of R code that calls C/C++&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus_files/instruments_screenshot.png&#34; alt=&#34;Xcode Instruments screenshot showing profiling of R code that calls C/C++&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;For users on Windows, the GPL licensed &lt;a href=&#34;http://www.codersnotes.com/sleepy/&#34;&gt;Very Sleepy&lt;/a&gt; is an excellent GUI profilier that works almost identically to Xcode Instruments for CPU Profiling.&lt;/p&gt;
 
