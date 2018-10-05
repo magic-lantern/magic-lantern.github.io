@@ -27,12 +27,8 @@
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/project/pediatric-complex-chronic-conditions/</guid>
-      <description>We&amp;rsquo;ve published a research letter in JAMA Pediatrics on this R package:
-https://jamanetwork.com/journals/jamapediatrics/fullarticle/2677901
-For source code see:
-https://github.com/CUD2V/pccc
-Motivation Version 2 of the Pediatric Complex Chronic Conditions (CCC) system was published &amp;ldquo;Pediatric complex chronic conditions classification system version 2: updated for ICD-10 and complex medical technology dependence and transplantation&amp;rdquo; by Chris Feudtner, James A Feinstein, Wenjun Zhong, Matt Hall and Dingwei Dai.
-SAS and STATA scripts to generate CCC categories from ICD codes were provided by Feudtner et al.</description>
+      <description>Motivation Version 2 of the Pediatric Complex Chronic Conditions (CCC) system was published &amp;ldquo;Pediatric complex chronic conditions classification system version 2: updated for ICD-10 and complex medical technology dependence and transplantation&amp;rdquo; by Chris Feudtner, James A Feinstein, Wenjun Zhong, Matt Hall and Dingwei Dai.
+SAS and STATA scripts to generate CCC categories from ICD codes were provided by Feudtner et al. as an appendix to the above manuscript. However, those scripts can take many hours to run on large datasets.</description>
     </item>
     
   </channel>
