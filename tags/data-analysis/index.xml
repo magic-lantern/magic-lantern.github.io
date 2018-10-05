@@ -6,10 +6,10 @@
     <description>Recent content in Data Analysis on Seth Russell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Seth Russell</copyright>
+    <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Thu, 27 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/data-analysis/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/data-analysis/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,9 +18,394 @@
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/09/27/2018-09-27-example-of-python-data-analysis/</guid>
-      <description>Work in Progress&amp;hellip;
-This Analytics example is meant to demonstrate a few of the things you can do to analyze data stored in Google BigQuery using Python. Originally developed some time ago, I thought I&amp;rsquo;d clean it up and post it here.
-For those that aren&amp;rsquo;t familiar with BigQuery, it is a &amp;lsquo;serverless&amp;rsquo; database system that is fully managed and always available. Instead of charging per environment/instance/hour of time like many cloud database systems, Google charges based on the amount of data a query processes.</description>
+      <description>
+
+&lt;p&gt;&lt;em&gt;Work in Progress&amp;hellip;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This Analytics example is meant to demonstrate a few of the things you can do to analyze data stored in Google BigQuery using Python. Originally developed some time ago, I thought I&amp;rsquo;d clean it up and post it here.&lt;/p&gt;
+
+&lt;p&gt;For those that aren&amp;rsquo;t familiar with BigQuery, it is a &amp;lsquo;serverless&amp;rsquo; database system that is fully managed and always available. Instead of charging per environment/instance/hour of time like many cloud database systems, Google charges based on the amount of data a query processes. For those familiar with Amazon Web Services, BigQuery is more like DynamoDB rather than an Aurora/Redshift/etc instances where you pay per hour.&lt;/p&gt;
+
+&lt;p&gt;For more details on this example, setup, etc. please see the project wiki: &lt;a href=&#34;https://github.com/CUD2V/analytics_examples/wiki&#34;&gt;https://github.com/CUD2V/analytics_examples/wiki&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For some additional examples showing more of the capabilities of Google BigQuery or Google Cloud Storage see:
+* &lt;a href=&#34;https://gist.github.com/magic-lantern/904e22ca625404da489dab4f2706fdc7&#34;&gt;Google Cloud BigQuery Example&lt;/a&gt; - Some alternative methods of getting data from Google BigQuery.
+* &lt;a href=&#34;https://gist.github.com/magic-lantern/c11500847f06a6e63bae4ca010595773&#34;&gt;Google Cloud Storage Example&lt;/a&gt; - Most analysis that a person would want to do will likely include accessing external data or storing results of some process for further downstream analysis. Google Cloud Storage is one option for that phase of an anlysis pipeline.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import pandas
+
+from IPython.core.display import display, HTML
+display(HTML(&amp;quot;&amp;lt;style&amp;gt;.container { width:95% !important; }&amp;lt;/style&amp;gt;&amp;quot;))
+
+import psycopg2 as pg
+import pandas.io.sql as psql
+
+from bokeh.io import output_notebook, show
+output_notebook()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# this is to hide useless errors if using OAuth with BigQuery
+import logging
+logging.getLogger(&#39;googleapiclient.discovery_cache&#39;).setLevel(logging.CRITICAL)
+# don&#39;t want to be messaged about future warnings as I&#39;m not explicitly calling code that is being warned about
+import warnings
+warnings.simplefilter(action=&#39;ignore&#39;, category=FutureWarning)
+
+# set this to either postgres or bigquery ####
+datasource = &#39;bigquery&#39;
+##############################################
+
+if datasource == &#39;postgres&#39;:
+    # get connected to the database
+    connection = pg.connect(&amp;quot;host=localhost dbname=ohdsi user=ohdsi password=ohdsi&amp;quot;)
+
+    # print the connection string we will use to connect
+    print(&amp;quot;Connecting to database: &amp;quot;, connection)
+
+    # conn.cursor will return a cursor object, you can use this cursor to perform queries
+    cursor = connection.cursor()
+    print(&amp;quot;Connected to Postgres database!\n&amp;quot;)
+elif datasource == &#39;bigquery&#39;:
+    connection = {
+        &#39;project_id&#39; : &#39;synpuf-omop-project&#39;,
+        &#39;dialect&#39;    : &#39;standard&#39;
+    }
+    print(&amp;quot;Setup Google BigQuery connection&amp;quot;)
+else:
+    connection = None
+
+def read_data(sql):
+    if datasource == &#39;postgres&#39;:
+        return pandas.read_sql(sql, connection)
+    elif datasource == &#39;bigquery&#39;:
+        return pandas.read_gbq(sql, **connection)
+    else:
+        return pandas.DataFrame()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;exploration-and-visualization&#34;&gt;Exploration and Visualization&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;These next cells are charts looking at births by year - of the population still active in medicare today.&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from bokeh.charts import Bar
+from bokeh.io import output_notebook, show
+from bokeh.charts import defaults
+defaults.width = 900
+defaults.height = 700
+
+age_df = read_data(&#39;&#39;&#39;
+select
+    count(year_of_birth) count,
+    year_of_birth,
+    c1.concept_name gender
+from synpuf_omop.person p
+left join synpuf_omop.concept c1 on p.gender_concept_id = c1.concept_id
+group by gender, year_of_birth
+order by year_of_birth, gender
+&#39;&#39;&#39;)
+
+p = Bar(age_df,             # source of data
+        &#39;year_of_birth&#39;,    # columns from dataframe to use
+        #label=&#39;origin&#39;, 
+        agg=&#39;sum&#39;,
+        values=&#39;count&#39;,
+        stack=&#39;gender&#39;,
+        title=&amp;quot;Births by year, stacked by gender&amp;quot;,
+        legend=&#39;top_right&#39;)
+show(p)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from bokeh.charts import Bar
+from bokeh.io import output_notebook, show
+from bokeh.charts import defaults
+defaults.width = 900
+defaults.height = 700
+
+pct_df = read_data(
+&#39;&#39;&#39;
+select
+    year_of_birth,
+    count(case when c1.concept_name = &#39;FEMALE&#39; then 1 end) gender_count,
+    &#39;FEMALE&#39; gender,
+    count(1) total_births
+from synpuf_omop.person p
+left join synpuf_omop.concept c1 on p.gender_concept_id = c1.concept_id
+group by year_of_birth
+union all
+select
+    year_of_birth,
+    count(case when c1.concept_name = &#39;MALE&#39; then 1 end) gender_count,
+    &#39;MALE&#39; gender,
+    count(1) total_births
+from synpuf_omop.person p
+left join synpuf_omop.concept c1 on p.gender_concept_id = c1.concept_id
+group by year_of_birth
+order by year_of_birth, gender asc
+&#39;&#39;&#39;)
+
+def f(i):
+    return float(i[&#39;gender_count&#39;]) / float(i[&#39;total_births&#39;])
+pct_df[&#39;pct&#39;] = pct_df.apply(f, axis=1)
+
+
+p = Bar(pct_df,             # source of data
+        values=&#39;pct&#39;,          # y axis
+        label=&#39;year_of_birth&#39;, # x axis 
+        agg=&#39;sum&#39;,
+        stack=&#39;gender&#39;,
+        title=&amp;quot;Percentage of births by year, stacked by gender&amp;quot;,
+        legend=&#39;top_right&#39;)
+show(p)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;These next few cells look at drug duration (how long a perscription is to last)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Due to differences in SQL dialects, this is the PostgreSQL version - inline below is the Google BigQuery version. Might be possible to make one statement work for both&amp;hellip;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+    --person_id,
+    --drug_concept_id,
+    c1.concept_name drug_name,
+    --drug_era_start_date,
+    --drug_era_end_date,
+    drug_era_end_date - drug_era_start_date duration
+from synpuf_omop.drug_era d
+left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
+where c1.concept_name in (
+select drug_name from (
+    select
+    c1.concept_name drug_name,
+    count(1) count
+    from synpuf_omop.drug_era d
+    left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
+    group by drug_name
+    order by count desc
+    limit 25
+   ) x
+)
+order by drug_name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# perhaps modify this query to look at drugs with most variation in duration?
+
+from bokeh.charts import BoxPlot, output_file, show
+from bokeh.sampledata.autompg import autompg as df
+from bokeh.charts import defaults
+defaults.width = 900
+defaults.height = 900
+
+dd_df = read_data(
+&#39;&#39;&#39;
+select
+    --person_id,
+    --drug_concept_id,
+    c1.concept_name drug_name,
+    --drug_era_start_date,
+    --drug_era_end_date,
+    date_diff(cast(drug_era_end_date as date), cast(drug_era_start_date as date), day) as duration
+from synpuf_omop.drug_era d
+left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
+where c1.concept_name in (
+select drug_name from (
+    select
+    c1.concept_name drug_name,
+    count(1) count
+    from synpuf_omop.drug_era d
+    left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
+    group by drug_name
+    order by count desc
+    limit 25
+   ) x
+)
+order by drug_name
+&#39;&#39;&#39;)
+
+p = BoxPlot(dd_df,
+            values=&#39;duration&#39;,      # y axis
+            label=&#39;drug_name&#39;,      # x axis
+            title=&amp;quot;Drug Duration Box Plot&amp;quot;,
+            legend=False,
+           )
+p.xaxis.axis_label = &amp;quot;Drug&amp;quot;
+p.yaxis.axis_label = &amp;quot;Duration (days)&amp;quot;
+
+
+show(p)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Alternatively, you can just get all the data via more simple SQL SELECT statment and do the data processing via Pandas&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Again as with the previous query, due to SQL dialect differences, this is the PostgreSQL version - in cell below is the BigQuery version:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+    c1.concept_name drug_name,
+    drug_era_end_date - drug_era_start_date duration
+from synpuf_omop.drug_era d
+left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
+order by drug_name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;size_df = None
+drug_df = None
+top_25 = None
+top_drugs = None
+
+drug_df = read_data(
+&#39;&#39;&#39;
+select
+    c1.concept_name drug_name,
+    date_diff(cast(drug_era_end_date as date), cast(drug_era_start_date as date), day) as duration
+from synpuf_omop.drug_era d
+left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
+order by drug_name
+&#39;&#39;&#39;)
+
+# if we only want to look at 25 most common drugs
+# count rows grouping by drug_name
+size_df = drug_df.groupby(&amp;quot;drug_name&amp;quot;).size()
+# sort the counted result and only return top 25
+top_25 = size_df.sort_values(ascending = False).head(25)
+# for verification purposes show all rows from original dataset matching most common drug
+#drug_df[drug_df.drug_name.str.contains(top_25.index[0]) == True]
+# only keep rows that match the top_25 pandas series (single column of a dataframe)
+top_drugs = drug_df[drug_df[&#39;drug_name&#39;].isin(top_25.index)]
+# for verification sql method says there are 1683795 rows
+print(&amp;quot;Does Pandas version match SQL results:&amp;quot;, top_drugs.shape[0] == 1683795)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from bokeh.charts import BoxPlot, output_file, show
+from bokeh.sampledata.autompg import autompg as df
+from bokeh.charts import defaults
+defaults.width = 900
+defaults.height = 900
+p = BoxPlot(top_drugs,
+            values=&#39;duration&#39;,      # y axis
+            label=&#39;drug_name&#39;,      # x axis
+            title=&amp;quot;Drug Duration Box Plot&amp;quot;,
+            legend=False,
+           )
+p.xaxis.axis_label = &amp;quot;Drug&amp;quot;
+p.yaxis.axis_label = &amp;quot;Duration (days)&amp;quot;
+
+
+show(p)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;cohort-identification-prediction&#34;&gt;Cohort identification &amp;amp; Prediction&lt;/h2&gt;
+
+&lt;p&gt;Suppose we want to do some analysis including prediction for patients that complain of lower back pain (SNOMED code 279039007 - see &lt;a href=&#34;http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&amp;amp;conceptid=279039007&#34;&gt;http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&amp;amp;conceptid=279039007&lt;/a&gt; or &lt;a href=&#34;https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&amp;amp;code=279039007&#34;&gt;https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&amp;amp;code=279039007&lt;/a&gt; for more information)&lt;/p&gt;
+
+&lt;p&gt;The OMOP data model has &lt;a href=&#34;http://www.ohdsi.org/web/wiki/doku.php?id=documentation:cdm:condition_occurrence&#34;&gt;CONDITION_OCCURRENCE&lt;/a&gt; table to document findings. The &lt;a href=&#34;http://www.ohdsi.org/web/wiki/doku.php?id=documentation:cdm:condition_era&#34;&gt;CONDITION_ERA&lt;/a&gt; table is a calculation of a condition duration.&lt;/p&gt;
+
+&lt;p&gt;While there are many elements that we could use for predicting condition duration, suppose we start with basic demographic information about the patient. Here&amp;rsquo;s a query that creates a pandas dataframe with our desired cohort.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;backpain_df = read_data(
+&#39;&#39;&#39;
+SELECT
+  c.person_id,
+  gender_concept_id,
+  year_of_birth,
+  race_concept_id,
+  ethnicity_concept_id,
+  location_id,
+  DATE_DIFF(CAST(condition_era_end_date AS date), CAST(condition_era_start_date AS date), day) AS duration
+FROM
+  synpuf_omop.condition_era c
+LEFT JOIN
+  synpuf_omop.person p
+ON
+  c.person_id = p.person_id
+WHERE
+  condition_concept_id = 194133
+&#39;&#39;&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# View summary information about dataset
+print(backpain_df.describe().to_string())
+
+# prevent wrapping when printing the full dataframe
+pandas.set_option(&#39;display.expand_frame_repr&#39;, False)
+print(backpain_df)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;bf = backpain_df.copy()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Most of the data in this dataset is categorical, so need to use dummy encoding on each categorical column
+# so that regression will work correctly. Here&#39;s the categorical columns:
+#   gender_concept_id     (binary)
+#   race_concept_id       (multiple categories)
+#   ethnicity_concept_id  (binary)
+#   location_id           (multiple categories)
+#
+# can&#39;t do them all at once - so step through one at a time
+bf = pandas.get_dummies(bf, columns=[&#39;gender_concept_id&#39;], drop_first=True)
+bf = pandas.get_dummies(bf, columns=[&#39;race_concept_id&#39;], drop_first=True)
+bf = pandas.get_dummies(bf, columns=[&#39;ethnicity_concept_id&#39;], drop_first=True)
+bf = pandas.get_dummies(bf, columns=[&#39;location_id&#39;], drop_first=True)
+print(bf.head())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# only run this cell if previous results look correct
+backpain_df = bf.copy()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(backpain_df.head())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# divide data into independent and dependent variables
+
+# exclude person_id and duration from independent variables
+input_df = backpain_df.drop([&#39;person_id&#39;, &#39;duration&#39;], axis=1)
+
+output_df = backpain_df[&#39;duration&#39;]
+
+# split data into training vs testing dataset
+from sklearn.model_selection import train_test_split
+
+input_train, input_test, output_train, output_test = train_test_split(input_df, output_df, test_size = 0.2, random_state = 0)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# now generate linear regression model on training data
+from sklearn.linear_model import LinearRegression
+lm = LinearRegression()
+lm.fit(input_train, output_train)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# print intercept and coefficients
+print(&amp;quot;Intercept: &amp;quot;, lm.intercept_)
+print(&amp;quot;Coefficients: &amp;quot;, lm.coef_)
+print(&amp;quot;R^2 value: &amp;quot;, lm.score(input_train, output_train))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For a brief explaination of what R&lt;sup&gt;2&lt;/sup&gt; means, see &lt;a href=&#34;http://blog.minitab.com/blog/adventures-in-statistics-2/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit&#34;&gt;http://blog.minitab.com/blog/adventures-in-statistics-2/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In general, the closer R&lt;sup&gt;2&lt;/sup&gt; is to 1, the better the model explains variation in data. Plotting or visualizing data along with the predictive model helps to visually understand how close they are to each other.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# now evaluate model on test data
+
+# now predict answers (regression) - since we only care about whole days, round all output to whole numbers
+output_pred = pandas.Series(data=lm.predict(input_test))
+output_pred = output_pred.round()
+
+for index, value in output_pred.iteritems():
+    print(&#39;Real value: &#39;, output_test.values[index], &#39;Predicted value: &#39;, value)
+    if index &amp;gt;= 10:
+        break
+        
+# should next calculate various measures such as precision, recall, etc. 
+# See https://stackoverflow.com/questions/31421413/how-to-compute-precision-recall-accuracy-and-f1-score-for-the-multiclass-case
+# for some examples.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;final-notes&#34;&gt;Final notes&lt;/h2&gt;
+
+&lt;p&gt;In order to decide which variables are meaningful in the model, methods such as back-propigation, forward-propigation or similar methods should be used.&lt;/p&gt;
+
+&lt;p&gt;Additionally, other regression methods may work better for predicting duration - in fact the data may not even be suited for Linear Regression. In order for Linear Regression to work, certain assumptions about the data must be true. For more information see: &lt;a href=&#34;http://pareonline.net/getvn.asp?n=2&amp;amp;v=8&#34;&gt;http://pareonline.net/getvn.asp?n=2&amp;amp;v=8&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Also, since this data set has other elements, the inclusion of other factors may help in predicting condition duration.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

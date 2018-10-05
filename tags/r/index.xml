@@ -6,10 +6,10 @@
     <description>Recent content in R on Seth Russell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Seth Russell</copyright>
+    <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Thu, 04 Oct 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,7 +18,110 @@
       <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/10/04/2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus/</guid>
-      <description>While there are many options for profiling C++ (or other compiled code) on Linux, many of those tools are difficult to get working correctly with R. Additionally, profiling R code with C++ is complicated due to different settings between various commonly use OSes. While there are some blog posts and presentation materials available on the Internet, many miss important steps that take some effort to determine the correct solution to resolve.</description>
+      <description>
+
+&lt;p&gt;While there are many options for profiling C++ (or other compiled code) on Linux, many of those tools are difficult to get working correctly with R. Additionally, profiling R code with C++ is complicated due to different settings between various commonly use OSes. While there are some blog posts and presentation materials available on the Internet, many miss important steps that take some effort to determine the correct solution to resolve.&lt;/p&gt;
+
+&lt;h2 id=&#34;steps-to-profile-c-code-being-called-by-r-code-on-macos-using-xcode-s-instruments&#34;&gt;Steps to profile C++ code being called by R code on macOS using Xcode’s Instruments&lt;/h2&gt;
+
+&lt;p&gt;macOS users can use Xcode (freely available) for profiling of R code that calls C++ code. As Xcode has a nice GUI, it may be the preferred tool for many users. The primary profiling tool in Xcode is called &lt;a href=&#34;https://help.apple.com/instruments/mac/10.0/#/dev7b09c84f5&#34;&gt;Instruments&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here are some basic steps to get it working:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Configure compilation to enable debugging. In GCC and CLANG this can be accomplished by adding ‘-g’ to your compiler flags via Makevars. Depending on your other compiler settings you may also want to add -O0, though changing optimization levels may alter any gains achieved through profiling.&lt;/li&gt;
+&lt;li&gt;Determine what you want to profile. &lt;em&gt;The code you run needs to last sufficiently long to allow for application switching and to gather sufficient data via profiling.&lt;/em&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create a script to run the code you are interested in. Here is an example of running PCCC with an input dataset of 100000 rows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(pccc)
+icd10_large &amp;lt;- feather::read_feather(&amp;quot;../icd_file_generator/icd10_sample_large.feather&amp;quot;)
+icd10_large &amp;lt;- icd10_large[1:100000, c(1:45)]
+
+ccc(icd10_large[1:100000, c(1:45)], # get id, dx, and pc columns
+    id      = id,
+    dx_cols = dplyr::starts_with(&amp;quot;dx&amp;quot;),
+    pc_cols = dplyr::starts_with(&amp;quot;pc&amp;quot;),
+    icdv    = 10)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Prep Instruments by selecting ‘Time Profiler’ and then identifying the necessary process. If running script via RStudio, you will need to observe the rsession process. If running via command line R, the process is R. Alternatively run Instruments with “Allocations” to see memory allocations&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Start profiling.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Start your script in what ever fashion you normally run R scripts.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;After you have gathered sufficient data (perhaps 30 seconds to 1 minute), stop the profiling process.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Find your custom function calls in the symbol tree. There will likely be many layers before your code is called. The call just before your code will be “do_dotcall” The symbol tree should show your custom function names and how long each took.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Xcode Instruments screenshot showing C++ code from &lt;a href=&#34;https://cran.r-project.org/package=pccc&#34;&gt;PCCC&lt;/a&gt; R package
+&lt;img src=&#34;https://github.com/magic-lantern/SoftwareEngineeringPrinciples/raw/master/paper/instruments_screenshot.png&#34; alt=&#34;Xcode Instruments screenshot showing C++ code from PCCC R package&#34; title=&#34;Xcode Instruments screenshot showing C++ code from PCCC R package&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/post/2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus_files/instruments_screenshot.png&#34; alt=&#34;Xcode Instruments screenshot showing profiling of R code that calls C/C++&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For users on Windows, the GPL licensed &lt;a href=&#34;http://www.codersnotes.com/sleepy/&#34;&gt;Very Sleepy&lt;/a&gt; is an excellent GUI profilier that works almost identically to Xcode Instruments for CPU Profiling.&lt;/p&gt;
+
+&lt;h2 id=&#34;steps-to-profile-c-code-via-command-line-on-macos-and-linux-using-gperftools&#34;&gt;Steps to profile C++ code via command line on macOS and Linux using gperftools&lt;/h2&gt;
+
+&lt;p&gt;To profile R code that calls C++ code via command line tools requires calling the correct R binary as well as setting up correct environment variables in a OS specific fashion.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Follow steps 1 – 3 as shown above.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Identify location of R binary. By default ‘R’ is actually a batch shell script that launches the R binary. You cannot get the desired profiling informaiton about your code from profiling a shell script.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;For macOS, using R installed via Homebrew, the actual R binary is located at &lt;code&gt;/usr/local/Cellar/r/3.5.1/lib/R/bin/exec/R&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;For Linux users, the R binary is likely located at &lt;code&gt;/usr/lib/R/bin/exec/R&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Set (or verify) your R_HOME environment variable.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;For macOS, using R installed via Homebrew, the R_HOME is &lt;code&gt;/usr/local/Cellar/r/3.5.1/lib/R&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;For Linux users, the R binary is likely located at &lt;code&gt;/usr/lib/R/bin/exec/R&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If your environment variable is not set, set R_HOME via a command like (replace path with your actual R Home location). If you use bash, the command is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export R_HOME=/usr/lib/R/bin/exec/R
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Run your test (&lt;em&gt;in this example it is called profile_sample.R&lt;/em&gt;) script with the perftools libraries loaded and an environment variable CPUPROFILE that specifies the location to save the CPU profile output. Replace libprofiler path and file name with your actual filename. Replace R binary with your actual R binary with full path.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;For macOS, this is accomplished via the command &lt;code&gt;DYLD_INSERT_LIBRARIES=/usr/local/lib/libprofiler.dylib CPUPROFILE=sample.profile /usr/local/Cellar/r/3.5.1/lib/R/bin/exec/R -f profile_sample.R&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;For Linux, this is accomplished via the command &lt;code&gt;LD_PRELOAD=/usr/lib/libprofiler.so CPUPROFILE=sample.profile /usr/lib/R/bin/exec/R -f profile_sample.R&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;View the results via pprof; again, ensure you use your actual R binary path.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;For macOS, this is accomplished via the command &lt;code&gt;pprof --text /usr/local/Cellar/r/3.5.1/lib/R/bin/exec/R sample.profile&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;For Linux, this is accomplished via (Debian based distributions may call pprof ‘google-pprof’) the command &lt;code&gt;pprof --text /usr/bin/R ./sample.profile&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Output will be something similar to the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Using local file /usr/bin/R.
+Using local file ./sample.profile.
+Total: 7399 samples
+    2252  30.4%  30.4%     2252  30.4% __nss_passwd_lookup
+    2172  29.4%  59.8%     4389  59.3% std::__cxx11::basic_string::compare
+    982  13.3%  73.1%     5594  75.6% codes::find_match
+    591   8.0%  81.1%      621   8.4% Rf_mkCharLenCE
+    462   6.2%  87.3%      482   6.5% R_BadLongVector
+    223   3.0%  90.3%      223   3.0% std::vector::operator[] (inline)
+    151   2.0%  92.4%      151   2.0% std::__once_callable
+     98   1.3%  93.7%       98   1.3% SET_STRING_ELT
+     83   1.1%  94.8%       83   1.1% _init@6750
+     30   0.4%  95.2%      452   6.1% Rf_allocVector3
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
     </item>
     
     <item>
@@ -27,8 +130,63 @@
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/project/pediatric-complex-chronic-conditions/</guid>
-      <description>Motivation Version 2 of the Pediatric Complex Chronic Conditions (CCC) system was published &amp;ldquo;Pediatric complex chronic conditions classification system version 2: updated for ICD-10 and complex medical technology dependence and transplantation&amp;rdquo; by Chris Feudtner, James A Feinstein, Wenjun Zhong, Matt Hall and Dingwei Dai.
-SAS and STATA scripts to generate CCC categories from ICD codes were provided by Feudtner et al. as an appendix to the above manuscript. However, those scripts can take many hours to run on large datasets.</description>
+      <description>
+
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+
+&lt;p&gt;Version 2 of the Pediatric Complex Chronic Conditions (CCC) system was published
+&lt;a href=&#34;http://bmcpediatr.biomedcentral.com/articles/10.1186/1471-2431-14-199&#34;&gt;&amp;ldquo;Pediatric complex chronic conditions classification system version
+2: updated for ICD-10 and complex medical technology dependence and
+transplantation&amp;rdquo; by Chris Feudtner, James A Feinstein, Wenjun Zhong, Matt Hall
+and Dingwei Dai&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;SAS and STATA scripts to generate CCC categories from ICD codes were provided by Feudtner et al.
+as an appendix to the above manuscript. However, those scripts can take many hours to run
+on large datasets.&lt;/p&gt;
+
+&lt;p&gt;This package provides R functions to generate the CCC categories. Because the R functions
+are built with a C++ back-end, they are very computationally efficient.&lt;/p&gt;
+
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;h3 id=&#34;from-cran&#34;&gt;From CRAN&lt;/h3&gt;
+
+&lt;p&gt;Version 1.0.2 is available on The Comprehensive R Archive Network at &lt;a href=&#34;https://CRAN.R-project.org/package=pccc&#34;&gt;https://CRAN.R-project.org/package=pccc&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;developmental-version&#34;&gt;Developmental version&lt;/h3&gt;
+
+&lt;p&gt;You can install the
+developmental version of &lt;code&gt;pccc&lt;/code&gt; directly from github using the
+&lt;a href=&#34;https://github.com/hadley/devtools/&#34;&gt;&lt;code&gt;devtools&lt;/code&gt;&lt;/a&gt; package:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if (!(&amp;quot;devtools&amp;quot; %in% rownames(installed.packages()))) { 
+  warning(&amp;quot;installing devtools from https://cran.rstudio.com&amp;quot;)
+  install.packages(&amp;quot;devtools&amp;quot;, repo = &amp;quot;https://cran.rstudio.com&amp;quot;)
+}
+
+devtools::install_github(&amp;quot;CUD2V/pccc&amp;quot;, build_vignettes = TRUE)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;NOTE:&lt;/em&gt; If you are working on a Windows machine you will need to download and
+install &lt;a href=&#34;https://cran.r-project.org/bin/windows/Rtools/&#34;&gt;&lt;code&gt;Rtools&lt;/code&gt;&lt;/a&gt; before
+&lt;code&gt;devtools&lt;/code&gt; will work for you.&lt;/p&gt;
+
+&lt;p&gt;If you are on a Linux machine or have GNU &lt;code&gt;make&lt;/code&gt; configured you should be able
+to build and install this package by cloning the repository and running&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;more-project-information&#34;&gt;More project information&lt;/h2&gt;
+
+&lt;p&gt;We&amp;rsquo;ve published a research letter in JAMA Pediatrics on this R package:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jamanetwork.com/journals/jamapediatrics/fullarticle/2677901&#34;&gt;https://jamanetwork.com/journals/jamapediatrics/fullarticle/2677901&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For source code see:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/CUD2V/pccc&#34;&gt;https://github.com/CUD2V/pccc&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

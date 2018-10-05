@@ -6,10 +6,10 @@
     <description>Recent content in Project on Seth Russell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Seth Russell</copyright>
+    <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
     <lastBuildDate>Thu, 04 Oct 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/project/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/project/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,7 +18,14 @@
       <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/project/kung-faux-pandas/</guid>
-      <description>There are many barriers to data access and data sharing, especially in the domain of machine learning on health care data. Legal constraints such as HIPAA protect patient privacy but slow access to data and limit reproducibility. Kung Faux Pandas is an end-to-end system called Kung Faux Pandas for easily generating de-identified or synthetic data which is statistically similar to given real data but lacks sensitive information. This system focuses on data synthesis and de-identification narrowed to a specific research question to allow for self-service data access without the complexities required to generate an entire population of data that is not needed for a given research project.</description>
+      <description>&lt;p&gt;There are many barriers to data access and data sharing, especially in the domain of machine learning on health care data. Legal constraints such as HIPAA protect patient privacy but slow access to data and limit reproducibility. Kung Faux Pandas is an end-to-end system called Kung Faux Pandas for easily generating de-identified or synthetic data which is statistically similar to given real data but lacks sensitive information. This system focuses on data synthesis and de-identification narrowed to a specific research question to allow for self-service data access without the complexities required to generate an entire population of data that is not needed for a given research project. Kung Faux Pandas is an open source publicly available system that lowers barriers to HIPAA- and GDPR-compliant data sharing for enabling reproducibility and other purposes.&lt;/p&gt;
+
+&lt;p&gt;This data synthesis process was created using Python. In order to make it easier for others to replicate the environment, a range of environments are supported: Conda environment export, virtualenv requirements file, and a docker image with the latest code.&lt;/p&gt;
+
+&lt;p&gt;For source code see:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/CUD2V/kungfauxpandas&#34;&gt;https://github.com/CUD2V/kungfauxpandas&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -27,8 +34,63 @@
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/project/pediatric-complex-chronic-conditions/</guid>
-      <description>Motivation Version 2 of the Pediatric Complex Chronic Conditions (CCC) system was published &amp;ldquo;Pediatric complex chronic conditions classification system version 2: updated for ICD-10 and complex medical technology dependence and transplantation&amp;rdquo; by Chris Feudtner, James A Feinstein, Wenjun Zhong, Matt Hall and Dingwei Dai.
-SAS and STATA scripts to generate CCC categories from ICD codes were provided by Feudtner et al. as an appendix to the above manuscript. However, those scripts can take many hours to run on large datasets.</description>
+      <description>
+
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+
+&lt;p&gt;Version 2 of the Pediatric Complex Chronic Conditions (CCC) system was published
+&lt;a href=&#34;http://bmcpediatr.biomedcentral.com/articles/10.1186/1471-2431-14-199&#34;&gt;&amp;ldquo;Pediatric complex chronic conditions classification system version
+2: updated for ICD-10 and complex medical technology dependence and
+transplantation&amp;rdquo; by Chris Feudtner, James A Feinstein, Wenjun Zhong, Matt Hall
+and Dingwei Dai&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;SAS and STATA scripts to generate CCC categories from ICD codes were provided by Feudtner et al.
+as an appendix to the above manuscript. However, those scripts can take many hours to run
+on large datasets.&lt;/p&gt;
+
+&lt;p&gt;This package provides R functions to generate the CCC categories. Because the R functions
+are built with a C++ back-end, they are very computationally efficient.&lt;/p&gt;
+
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;h3 id=&#34;from-cran&#34;&gt;From CRAN&lt;/h3&gt;
+
+&lt;p&gt;Version 1.0.2 is available on The Comprehensive R Archive Network at &lt;a href=&#34;https://CRAN.R-project.org/package=pccc&#34;&gt;https://CRAN.R-project.org/package=pccc&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;developmental-version&#34;&gt;Developmental version&lt;/h3&gt;
+
+&lt;p&gt;You can install the
+developmental version of &lt;code&gt;pccc&lt;/code&gt; directly from github using the
+&lt;a href=&#34;https://github.com/hadley/devtools/&#34;&gt;&lt;code&gt;devtools&lt;/code&gt;&lt;/a&gt; package:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if (!(&amp;quot;devtools&amp;quot; %in% rownames(installed.packages()))) { 
+  warning(&amp;quot;installing devtools from https://cran.rstudio.com&amp;quot;)
+  install.packages(&amp;quot;devtools&amp;quot;, repo = &amp;quot;https://cran.rstudio.com&amp;quot;)
+}
+
+devtools::install_github(&amp;quot;CUD2V/pccc&amp;quot;, build_vignettes = TRUE)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;NOTE:&lt;/em&gt; If you are working on a Windows machine you will need to download and
+install &lt;a href=&#34;https://cran.r-project.org/bin/windows/Rtools/&#34;&gt;&lt;code&gt;Rtools&lt;/code&gt;&lt;/a&gt; before
+&lt;code&gt;devtools&lt;/code&gt; will work for you.&lt;/p&gt;
+
+&lt;p&gt;If you are on a Linux machine or have GNU &lt;code&gt;make&lt;/code&gt; configured you should be able
+to build and install this package by cloning the repository and running&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;more-project-information&#34;&gt;More project information&lt;/h2&gt;
+
+&lt;p&gt;We&amp;rsquo;ve published a research letter in JAMA Pediatrics on this R package:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jamanetwork.com/journals/jamapediatrics/fullarticle/2677901&#34;&gt;https://jamanetwork.com/journals/jamapediatrics/fullarticle/2677901&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For source code see:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/CUD2V/pccc&#34;&gt;https://github.com/CUD2V/pccc&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>
