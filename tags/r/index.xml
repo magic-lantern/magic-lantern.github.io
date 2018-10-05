@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Seth Russell</title>
+    <link>/tags/r/</link>
+    <description>Recent content in R on Seth Russell</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Seth Russell</copyright>
+    <lastBuildDate>Thu, 04 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to profile your R code that calls C/C&#43;&#43; </title>
+      <link>/2018/10/04/2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus/</link>
+      <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/10/04/2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus/</guid>
+      <description>While there are many options for profiling C++ (or other compiled code) on Linux, many of those tools are difficult to get working correctly with R. Additionally, profiling R code with C++ is complicated due to different settings between various commonly use OSes. While there are some blog posts and presentation materials available on the Internet, many miss important steps that take some effort to determine the correct solution to resolve.</description>
+    </item>
+    
+    <item>
+      <title>R Package for Pediatric Complex Chronic Condition Classification</title>
+      <link>/project/pediatric-complex-chronic-conditions/</link>
+      <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/project/pediatric-complex-chronic-conditions/</guid>
+      <description>We&amp;rsquo;ve published a research letter in JAMA Pediatrics on this R package:
+https://jamanetwork.com/journals/jamapediatrics/fullarticle/2677901
+For source code see:
+https://github.com/CUD2V/pccc
+Motivation Version 2 of the Pediatric Complex Chronic Conditions (CCC) system was published &amp;ldquo;Pediatric complex chronic conditions classification system version 2: updated for ICD-10 and complex medical technology dependence and transplantation&amp;rdquo; by Chris Feudtner, James A Feinstein, Wenjun Zhong, Matt Hall and Dingwei Dai.
+SAS and STATA scripts to generate CCC categories from ICD codes were provided by Feudtner et al.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -83,7 +83,13 @@
   
   <url>
     <loc>/tags/python/</loc>
-    <lastmod>2018-09-27T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/r/</loc>
+    <lastmod>2018-10-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
