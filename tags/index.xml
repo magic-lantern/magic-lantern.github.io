@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>Blog</title>
+      <link>/tags/blog/</link>
+      <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Data Analysis</title>
       <link>/tags/data-analysis/</link>
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
@@ -63,6 +72,15 @@
       <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/profiling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Project</title>
+      <link>/tags/project/</link>
+      <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/project/</guid>
       <description></description>
     </item>
     

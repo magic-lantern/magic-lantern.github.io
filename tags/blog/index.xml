@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Seth Russell</title>
+    <link>/tags/blog/</link>
+    <description>Recent content in Blog on Seth Russell</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Seth Russell</copyright>
+    <lastBuildDate>Thu, 04 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to profile your R code that calls C/C&#43;&#43; </title>
+      <link>/2018/10/04/2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus/</link>
+      <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/10/04/2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus/</guid>
+      <description>While there are many options for profiling C++ (or other compiled code) on Linux, many of those tools are difficult to get working correctly with R. Additionally, profiling R code with C++ is complicated due to different settings between various commonly use OSes. While there are some blog posts and presentation materials available on the Internet, many miss important steps that take some effort to determine the correct solution to resolve.</description>
+    </item>
+    
+    <item>
+      <title>Example of Python data analysis</title>
+      <link>/2018/09/27/2018-09-27-example-of-python-data-analysis/</link>
+      <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/09/27/2018-09-27-example-of-python-data-analysis/</guid>
+      <description>Work in Progress&amp;hellip;
+This Analytics example is meant to demonstrate a few of the things you can do to analyze data stored in Google BigQuery using Python. Originally developed some time ago, I thought I&amp;rsquo;d clean it up and post it here.
+For those that aren&amp;rsquo;t familiar with BigQuery, it is a &amp;lsquo;serverless&amp;rsquo; database system that is fully managed and always available. Instead of charging per environment/instance/hour of time like many cloud database systems, Google charges based on the amount of data a query processes.</description>
+    </item>
+    
+  </channel>
+</rss>
