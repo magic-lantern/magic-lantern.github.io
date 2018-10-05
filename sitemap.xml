@@ -3,18 +3,46 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/page/about/</loc>
+    <lastmod>2018-10-04T02:13:50+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2018/10/04/2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus/</loc>
     <lastmod>2018-10-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/page/about/</loc>
-    <lastmod>2015-04-03T02:13:50+00:00</lastmod>
+    <loc>/project/kung-faux-pandas/</loc>
+    <lastmod>2018-10-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/my-awesome-project/</loc>
-    <lastmod>2014-11-18T02:13:50+00:00</lastmod>
+    <loc>/2018/09/27/2018-09-27-example-of-python-data-analysis/</loc>
+    <lastmod>2018-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/pediatric-complex-chronic-conditions/</loc>
+    <lastmod>2018-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/bigquery/</loc>
+    <lastmod>2018-09-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/data-analysis/</loc>
+    <lastmod>2018-09-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/google-cloud/</loc>
+    <lastmod>2018-09-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -25,7 +53,13 @@
   
   <url>
     <loc>/page/</loc>
-    <lastmod>2015-04-03T02:13:50+00:00</lastmod>
+    <lastmod>2018-10-04T02:13:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/phi/</loc>
+    <lastmod>2018-10-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -43,19 +77,31 @@
   
   <url>
     <loc>/project/</loc>
-    <lastmod>2014-11-18T02:13:50+00:00</lastmod>
+    <lastmod>2018-10-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/python/</loc>
+    <lastmod>2018-09-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/</loc>
+    <lastmod>2018-10-04T02:13:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/synthetic-data/</loc>
     <lastmod>2018-10-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2018-10-04T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

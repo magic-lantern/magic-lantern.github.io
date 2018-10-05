@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Seth Russell</copyright>
-    <lastBuildDate>Thu, 04 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 04 Oct 2018 02:13:50 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>About</title>
+      <link>/page/about/</link>
+      <pubDate>Thu, 04 Oct 2018 02:13:50 +0000</pubDate>
+      
+      <guid>/page/about/</guid>
+      <description>About As an infomatician and experienced software engineer I help with the crucial effort of improving health care and reducing health care costs through the appropriate use of information technology. My experience and education provides me with the ability to develop requirements, build solutions, and test the success of a chosen solution. I have experience with commercial software such as Cerner Millennium Electronic Health Record (EHR) and Oracle Hyperion, standards based platforms such as SMART on FHIR and InfoButtons, and build from scratch tools and techniques.</description>
+    </item>
     
     <item>
       <title>How to profile your R code that calls C/C&#43;&#43; </title>
@@ -22,21 +31,37 @@
     </item>
     
     <item>
-      <title>About</title>
-      <link>/page/about/</link>
-      <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
+      <title>Kung Faux Pandas</title>
+      <link>/project/kung-faux-pandas/</link>
+      <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/page/about/</guid>
-      <description>About Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec dolor in magna lobortis egestas. Suspendisse eu erat tempor, tristique neque eu, convallis nulla. Curabitur vel bibendum lacus, at semper mauris. Suspendisse aliquet commodo ex, sed sagittis metus aliquam id. Maecenas feugiat rutrum lorem vel imperdiet. Nullam ornare lectus ut enim finibus, et porttitor mi tincidunt. Aenean lacinia, leo quis vehicula eleifend, quam libero sagittis erat, at euismod augue mauris et sapien.</description>
+      <guid>/project/kung-faux-pandas/</guid>
+      <description>There are many barriers to data access and data sharing, especially in the domain of machine learning on health care data. Legal constraints such as HIPAA protect patient privacy but slow access to data and limit reproducibility. Kung Faux Pandas is an end-to-end system called Kung Faux Pandas for easily generating de-identified or synthetic data which is statistically similar to given real data but lacks sensitive information. This system focuses on data synthesis and de-identification narrowed to a specific research question to allow for self-service data access without the complexities required to generate an entire population of data that is not needed for a given research project.</description>
     </item>
     
     <item>
-      <title>My awesome project</title>
-      <link>/project/my-awesome-project/</link>
-      <pubDate>Tue, 18 Nov 2014 02:13:50 +0000</pubDate>
+      <title>Example of Python data analysis</title>
+      <link>/2018/09/27/2018-09-27-example-of-python-data-analysis/</link>
+      <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/project/my-awesome-project/</guid>
-      <description>About project Aenean ipsum justo, semper eu nisl ut, pretium tincidunt sem. Praesent et diam sit amet lacus lobortis dictum a id lacus. Quisque hendrerit sit amet turpis eu varius. Ut id lorem ac felis ultrices tincidunt. Pellentesque consequat arcu ac fringilla imperdiet. Phasellus pellentesque, sapien non pulvinar blandit, sapien ante aliquet felis, vel porttitor sapien ante in lacus. Fusce non urna aliquet, malesuada nibh vel, luctus urna. Phasellus ut lacus molestie, varius purus quis, malesuada lorem.</description>
+      <guid>/2018/09/27/2018-09-27-example-of-python-data-analysis/</guid>
+      <description>Work in Progress&amp;hellip;
+This Analytics example is meant to demonstrate a few of the things you can do to analyze data stored in Google BigQuery using Python. Originally developed some time ago, I thought I&amp;rsquo;d clean it up and post it here.
+For those that aren&amp;rsquo;t familiar with BigQuery, it is a &amp;lsquo;serverless&amp;rsquo; database system that is fully managed and always available. Instead of charging per environment/instance/hour of time like many cloud database systems, Google charges based on the amount of data a query processes.</description>
+    </item>
+    
+    <item>
+      <title>R Package for Pediatric Complex Chronic Condition Classification</title>
+      <link>/project/pediatric-complex-chronic-conditions/</link>
+      <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/project/pediatric-complex-chronic-conditions/</guid>
+      <description>We&amp;rsquo;ve published a research letter in JAMA Pediatrics on this R package:
+https://jamanetwork.com/journals/jamapediatrics/fullarticle/2677901
+For source code see:
+https://github.com/CUD2V/pccc
+Motivation Version 2 of the Pediatric Complex Chronic Conditions (CCC) system was published &amp;ldquo;Pediatric complex chronic conditions classification system version 2: updated for ICD-10 and complex medical technology dependence and transplantation&amp;rdquo; by Chris Feudtner, James A Feinstein, Wenjun Zhong, Matt Hall and Dingwei Dai.
+SAS and STATA scripts to generate CCC categories from ICD codes were provided by Feudtner et al.</description>
     </item>
     
   </channel>

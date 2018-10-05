@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Example of Python data analysis &middot; Seth Russell</title>
+        <meta name="description" content="A demonstration of a few of the things you can do to analyze data stored in Google BigQuery using Python.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.49" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Example of Python data analysis">
+<meta property="og:description" content="A demonstration of a few of the things you can do to analyze data stored in Google BigQuery using Python.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="/2018/09/27/2018-09-27-example-of-python-data-analysis/">
+        <link rel="stylesheet" href="/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="/css/github.css" rel="stylesheet" id="theme-stylesheet">
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+        
+    </head>
+    <body>
+        
+<script type="application/javascript">
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-127048637-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Seth Russell" href="/">Seth Russell</a>
+                            </h1>
+                        
+                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/magic__lantern">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/magic-lantern">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/seth-russell">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Example of Python data analysis</h1>
+    
+        <p class="post-description" itemprop="description">A demonstration of a few of the things you can do to analyze data stored in Google BigQuery using Python.</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2018-09-27" itemprop="datePublished">Thu, Sep 27, 2018</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="#" itemprop="url" rel="author">Seth Russell</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<p><em>Work in Progress&hellip;</em></p>
+
+<p>This Analytics example is meant to demonstrate a few of the things you can do to analyze data stored in Google BigQuery using Python. Originally developed some time ago, I thought I&rsquo;d clean it up and post it here.</p>
+
+<p>For those that aren&rsquo;t familiar with BigQuery, it is a &lsquo;serverless&rsquo; database system that is fully managed and always available. Instead of charging per environment/instance/hour of time like many cloud database systems, Google charges based on the amount of data a query processes. For those familiar with Amazon Web Services, BigQuery is more like DynamoDB rather than an Aurora/Redshift/etc instances where you pay per hour.</p>
+
+<p>For more details on this example, setup, etc. please see the project wiki: <a href="https://github.com/CUD2V/analytics_examples/wiki">https://github.com/CUD2V/analytics_examples/wiki</a></p>
+
+<p>For some additional examples showing more of the capabilities of Google BigQuery or Google Cloud Storage see:
+* <a href="https://gist.github.com/magic-lantern/904e22ca625404da489dab4f2706fdc7">Google Cloud BigQuery Example</a> - Some alternative methods of getting data from Google BigQuery.
+* <a href="https://gist.github.com/magic-lantern/c11500847f06a6e63bae4ca010595773">Google Cloud Storage Example</a> - Most analysis that a person would want to do will likely include accessing external data or storing results of some process for further downstream analysis. Google Cloud Storage is one option for that phase of an anlysis pipeline.</p>
+
+<pre><code class="language-python">import pandas
+
+from IPython.core.display import display, HTML
+display(HTML(&quot;&lt;style&gt;.container { width:95% !important; }&lt;/style&gt;&quot;))
+
+import psycopg2 as pg
+import pandas.io.sql as psql
+
+from bokeh.io import output_notebook, show
+output_notebook()
+</code></pre>
+
+<pre><code class="language-python"># this is to hide useless errors if using OAuth with BigQuery
+import logging
+logging.getLogger('googleapiclient.discovery_cache').setLevel(logging.CRITICAL)
+# don't want to be messaged about future warnings as I'm not explicitly calling code that is being warned about
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
+# set this to either postgres or bigquery ####
+datasource = 'bigquery'
+##############################################
+
+if datasource == 'postgres':
+    # get connected to the database
+    connection = pg.connect(&quot;host=localhost dbname=ohdsi user=ohdsi password=ohdsi&quot;)
+
+    # print the connection string we will use to connect
+    print(&quot;Connecting to database: &quot;, connection)
+
+    # conn.cursor will return a cursor object, you can use this cursor to perform queries
+    cursor = connection.cursor()
+    print(&quot;Connected to Postgres database!\n&quot;)
+elif datasource == 'bigquery':
+    connection = {
+        'project_id' : 'synpuf-omop-project',
+        'dialect'    : 'standard'
+    }
+    print(&quot;Setup Google BigQuery connection&quot;)
+else:
+    connection = None
+
+def read_data(sql):
+    if datasource == 'postgres':
+        return pandas.read_sql(sql, connection)
+    elif datasource == 'bigquery':
+        return pandas.read_gbq(sql, **connection)
+    else:
+        return pandas.DataFrame()
+</code></pre>
+
+<h2 id="exploration-and-visualization">Exploration and Visualization</h2>
+
+<p><em>These next cells are charts looking at births by year - of the population still active in medicare today.</em></p>
+
+<pre><code class="language-python">from bokeh.charts import Bar
+from bokeh.io import output_notebook, show
+from bokeh.charts import defaults
+defaults.width = 900
+defaults.height = 700
+
+age_df = read_data('''
+select
+    count(year_of_birth) count,
+    year_of_birth,
+    c1.concept_name gender
+from synpuf_omop.person p
+left join synpuf_omop.concept c1 on p.gender_concept_id = c1.concept_id
+group by gender, year_of_birth
+order by year_of_birth, gender
+''')
+
+p = Bar(age_df,             # source of data
+        'year_of_birth',    # columns from dataframe to use
+        #label='origin', 
+        agg='sum',
+        values='count',
+        stack='gender',
+        title=&quot;Births by year, stacked by gender&quot;,
+        legend='top_right')
+show(p)
+</code></pre>
+
+<pre><code class="language-python">from bokeh.charts import Bar
+from bokeh.io import output_notebook, show
+from bokeh.charts import defaults
+defaults.width = 900
+defaults.height = 700
+
+pct_df = read_data(
+'''
+select
+    year_of_birth,
+    count(case when c1.concept_name = 'FEMALE' then 1 end) gender_count,
+    'FEMALE' gender,
+    count(1) total_births
+from synpuf_omop.person p
+left join synpuf_omop.concept c1 on p.gender_concept_id = c1.concept_id
+group by year_of_birth
+union all
+select
+    year_of_birth,
+    count(case when c1.concept_name = 'MALE' then 1 end) gender_count,
+    'MALE' gender,
+    count(1) total_births
+from synpuf_omop.person p
+left join synpuf_omop.concept c1 on p.gender_concept_id = c1.concept_id
+group by year_of_birth
+order by year_of_birth, gender asc
+''')
+
+def f(i):
+    return float(i['gender_count']) / float(i['total_births'])
+pct_df['pct'] = pct_df.apply(f, axis=1)
+
+
+p = Bar(pct_df,             # source of data
+        values='pct',          # y axis
+        label='year_of_birth', # x axis 
+        agg='sum',
+        stack='gender',
+        title=&quot;Percentage of births by year, stacked by gender&quot;,
+        legend='top_right')
+show(p)
+</code></pre>
+
+<p><em>These next few cells look at drug duration (how long a perscription is to last)</em></p>
+
+<p>Due to differences in SQL dialects, this is the PostgreSQL version - inline below is the Google BigQuery version. Might be possible to make one statement work for both&hellip;</p>
+
+<pre><code class="language-sql">select
+    --person_id,
+    --drug_concept_id,
+    c1.concept_name drug_name,
+    --drug_era_start_date,
+    --drug_era_end_date,
+    drug_era_end_date - drug_era_start_date duration
+from synpuf_omop.drug_era d
+left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
+where c1.concept_name in (
+select drug_name from (
+    select
+    c1.concept_name drug_name,
+    count(1) count
+    from synpuf_omop.drug_era d
+    left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
+    group by drug_name
+    order by count desc
+    limit 25
+   ) x
+)
+order by drug_name
+</code></pre>
+
+<pre><code class="language-python"># perhaps modify this query to look at drugs with most variation in duration?
+
+from bokeh.charts import BoxPlot, output_file, show
+from bokeh.sampledata.autompg import autompg as df
+from bokeh.charts import defaults
+defaults.width = 900
+defaults.height = 900
+
+dd_df = read_data(
+'''
+select
+    --person_id,
+    --drug_concept_id,
+    c1.concept_name drug_name,
+    --drug_era_start_date,
+    --drug_era_end_date,
+    date_diff(cast(drug_era_end_date as date), cast(drug_era_start_date as date), day) as duration
+from synpuf_omop.drug_era d
+left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
+where c1.concept_name in (
+select drug_name from (
+    select
+    c1.concept_name drug_name,
+    count(1) count
+    from synpuf_omop.drug_era d
+    left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
+    group by drug_name
+    order by count desc
+    limit 25
+   ) x
+)
+order by drug_name
+''')
+
+p = BoxPlot(dd_df,
+            values='duration',      # y axis
+            label='drug_name',      # x axis
+            title=&quot;Drug Duration Box Plot&quot;,
+            legend=False,
+           )
+p.xaxis.axis_label = &quot;Drug&quot;
+p.yaxis.axis_label = &quot;Duration (days)&quot;
+
+
+show(p)
+</code></pre>
+
+<p><em>Alternatively, you can just get all the data via more simple SQL SELECT statment and do the data processing via Pandas</em></p>
+
+<p>Again as with the previous query, due to SQL dialect differences, this is the PostgreSQL version - in cell below is the BigQuery version:</p>
+
+<pre><code class="language-sql">select
+    c1.concept_name drug_name,
+    drug_era_end_date - drug_era_start_date duration
+from synpuf_omop.drug_era d
+left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
+order by drug_name
+</code></pre>
+
+<pre><code class="language-python">size_df = None
+drug_df = None
+top_25 = None
+top_drugs = None
+
+drug_df = read_data(
+'''
+select
+    c1.concept_name drug_name,
+    date_diff(cast(drug_era_end_date as date), cast(drug_era_start_date as date), day) as duration
+from synpuf_omop.drug_era d
+left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
+order by drug_name
+''')
+
+# if we only want to look at 25 most common drugs
+# count rows grouping by drug_name
+size_df = drug_df.groupby(&quot;drug_name&quot;).size()
+# sort the counted result and only return top 25
+top_25 = size_df.sort_values(ascending = False).head(25)
+# for verification purposes show all rows from original dataset matching most common drug
+#drug_df[drug_df.drug_name.str.contains(top_25.index[0]) == True]
+# only keep rows that match the top_25 pandas series (single column of a dataframe)
+top_drugs = drug_df[drug_df['drug_name'].isin(top_25.index)]
+# for verification sql method says there are 1683795 rows
+print(&quot;Does Pandas version match SQL results:&quot;, top_drugs.shape[0] == 1683795)
+</code></pre>
+
+<pre><code class="language-python">from bokeh.charts import BoxPlot, output_file, show
+from bokeh.sampledata.autompg import autompg as df
+from bokeh.charts import defaults
+defaults.width = 900
+defaults.height = 900
+p = BoxPlot(top_drugs,
+            values='duration',      # y axis
+            label='drug_name',      # x axis
+            title=&quot;Drug Duration Box Plot&quot;,
+            legend=False,
+           )
+p.xaxis.axis_label = &quot;Drug&quot;
+p.yaxis.axis_label = &quot;Duration (days)&quot;
+
+
+show(p)
+</code></pre>
+
+<h2 id="cohort-identification-prediction">Cohort identification &amp; Prediction</h2>
+
+<p>Suppose we want to do some analysis including prediction for patients that complain of lower back pain (SNOMED code 279039007 - see <a href="http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&amp;conceptid=279039007">http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&amp;conceptid=279039007</a> or <a href="https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&amp;code=279039007">https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&amp;code=279039007</a> for more information)</p>
+
+<p>The OMOP data model has <a href="http://www.ohdsi.org/web/wiki/doku.php?id=documentation:cdm:condition_occurrence">CONDITION_OCCURRENCE</a> table to document findings. The <a href="http://www.ohdsi.org/web/wiki/doku.php?id=documentation:cdm:condition_era">CONDITION_ERA</a> table is a calculation of a condition duration.</p>
+
+<p>While there are many elements that we could use for predicting condition duration, suppose we start with basic demographic information about the patient. Here&rsquo;s a query that creates a pandas dataframe with our desired cohort.</p>
+
+<pre><code class="language-python">backpain_df = read_data(
+'''
+SELECT
+  c.person_id,
+  gender_concept_id,
+  year_of_birth,
+  race_concept_id,
+  ethnicity_concept_id,
+  location_id,
+  DATE_DIFF(CAST(condition_era_end_date AS date), CAST(condition_era_start_date AS date), day) AS duration
+FROM
+  synpuf_omop.condition_era c
+LEFT JOIN
+  synpuf_omop.person p
+ON
+  c.person_id = p.person_id
+WHERE
+  condition_concept_id = 194133
+''')
+</code></pre>
+
+<pre><code class="language-python"># View summary information about dataset
+print(backpain_df.describe().to_string())
+
+# prevent wrapping when printing the full dataframe
+pandas.set_option('display.expand_frame_repr', False)
+print(backpain_df)
+</code></pre>
+
+<pre><code class="language-python">bf = backpain_df.copy()
+</code></pre>
+
+<pre><code class="language-python"># Most of the data in this dataset is categorical, so need to use dummy encoding on each categorical column
+# so that regression will work correctly. Here's the categorical columns:
+#   gender_concept_id     (binary)
+#   race_concept_id       (multiple categories)
+#   ethnicity_concept_id  (binary)
+#   location_id           (multiple categories)
+#
+# can't do them all at once - so step through one at a time
+bf = pandas.get_dummies(bf, columns=['gender_concept_id'], drop_first=True)
+bf = pandas.get_dummies(bf, columns=['race_concept_id'], drop_first=True)
+bf = pandas.get_dummies(bf, columns=['ethnicity_concept_id'], drop_first=True)
+bf = pandas.get_dummies(bf, columns=['location_id'], drop_first=True)
+print(bf.head())
+</code></pre>
+
+<pre><code class="language-python"># only run this cell if previous results look correct
+backpain_df = bf.copy()
+</code></pre>
+
+<pre><code class="language-python">print(backpain_df.head())
+</code></pre>
+
+<pre><code class="language-python"># divide data into independent and dependent variables
+
+# exclude person_id and duration from independent variables
+input_df = backpain_df.drop(['person_id', 'duration'], axis=1)
+
+output_df = backpain_df['duration']
+
+# split data into training vs testing dataset
+from sklearn.model_selection import train_test_split
+
+input_train, input_test, output_train, output_test = train_test_split(input_df, output_df, test_size = 0.2, random_state = 0)
+</code></pre>
+
+<pre><code class="language-python"># now generate linear regression model on training data
+from sklearn.linear_model import LinearRegression
+lm = LinearRegression()
+lm.fit(input_train, output_train)
+</code></pre>
+
+<pre><code class="language-python"># print intercept and coefficients
+print(&quot;Intercept: &quot;, lm.intercept_)
+print(&quot;Coefficients: &quot;, lm.coef_)
+print(&quot;R^2 value: &quot;, lm.score(input_train, output_train))
+</code></pre>
+
+<p>For a brief explaination of what R<sup>2</sup> means, see <a href="http://blog.minitab.com/blog/adventures-in-statistics-2/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit">http://blog.minitab.com/blog/adventures-in-statistics-2/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit</a></p>
+
+<p>In general, the closer R<sup>2</sup> is to 1, the better the model explains variation in data. Plotting or visualizing data along with the predictive model helps to visually understand how close they are to each other.</p>
+
+<pre><code class="language-python"># now evaluate model on test data
+
+# now predict answers (regression) - since we only care about whole days, round all output to whole numbers
+output_pred = pandas.Series(data=lm.predict(input_test))
+output_pred = output_pred.round()
+
+for index, value in output_pred.iteritems():
+    print('Real value: ', output_test.values[index], 'Predicted value: ', value)
+    if index &gt;= 10:
+        break
+        
+# should next calculate various measures such as precision, recall, etc. 
+# See https://stackoverflow.com/questions/31421413/how-to-compute-precision-recall-accuracy-and-f1-score-for-the-multiclass-case
+# for some examples.
+</code></pre>
+
+<h2 id="final-notes">Final notes</h2>
+
+<p>In order to decide which variables are meaningful in the model, methods such as back-propigation, forward-propigation or similar methods should be used.</p>
+
+<p>Additionally, other regression methods may work better for predicting duration - in fact the data may not even be suited for Linear Regression. In order for Linear Regression to work, certain assumptions about the data must be true. For more information see: <a href="http://pareonline.net/getvn.asp?n=2&amp;v=8">http://pareonline.net/getvn.asp?n=2&amp;v=8</a></p>
+
+<p>Also, since this data set has other elements, the inclusion of other factors may help in predicting condition duration.</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+            
+                <a href="/tags/data-analysis/">data analysis</a>, 
+            
+                <a href="/tags/google-cloud/">google cloud</a>, 
+            
+                <a href="/tags/python/">python</a>, 
+            
+                <a href="/tags/bigquery/">bigquery</a>
+            
+        </p>
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Example%20of%20Python%20data%20analysis&url=%2f2018%2f09%2f27%2f2018-09-27-example-of-python-data-analysis%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2f2018%2f09%2f27%2f2018-09-27-example-of-python-data-analysis%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2f2018%2f09%2f27%2f2018-09-27-example-of-python-data-analysis%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Example%20of%20Python%20data%20analysis&url=%2f2018%2f09%2f27%2f2018-09-27-example-of-python-data-analysis%2f&summary=A%20demonstration%20of%20a%20few%20of%20the%20things%20you%20can%20do%20to%20analyze%20data%20stored%20in%20Google%20BigQuery%20using%20Python."
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Seth Russell" href="/">Seth Russell</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2018 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
+

@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Seth Russell</copyright>
-    <lastBuildDate>Fri, 03 Apr 2015 02:13:50 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 04 Oct 2018 02:13:50 +0000</lastBuildDate>
     
 	<atom:link href="/page/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,10 +15,10 @@
     <item>
       <title>About</title>
       <link>/page/about/</link>
-      <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
+      <pubDate>Thu, 04 Oct 2018 02:13:50 +0000</pubDate>
       
       <guid>/page/about/</guid>
-      <description>About Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec dolor in magna lobortis egestas. Suspendisse eu erat tempor, tristique neque eu, convallis nulla. Curabitur vel bibendum lacus, at semper mauris. Suspendisse aliquet commodo ex, sed sagittis metus aliquam id. Maecenas feugiat rutrum lorem vel imperdiet. Nullam ornare lectus ut enim finibus, et porttitor mi tincidunt. Aenean lacinia, leo quis vehicula eleifend, quam libero sagittis erat, at euismod augue mauris et sapien.</description>
+      <description>About As an infomatician and experienced software engineer I help with the crucial effort of improving health care and reducing health care costs through the appropriate use of information technology. My experience and education provides me with the ability to develop requirements, build solutions, and test the success of a chosen solution. I have experience with commercial software such as Cerner Millennium Electronic Health Record (EHR) and Oracle Hyperion, standards based platforms such as SMART on FHIR and InfoButtons, and build from scratch tools and techniques.</description>
     </item>
     
   </channel>

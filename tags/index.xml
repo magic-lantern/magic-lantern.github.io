@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Seth Russell</copyright>
-    <lastBuildDate>Thu, 04 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bigquery</title>
+      <link>/tags/bigquery/</link>
+      <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/bigquery/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Analysis</title>
+      <link>/tags/data-analysis/</link>
+      <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/data-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Google Cloud</title>
+      <link>/tags/google-cloud/</link>
+      <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/google-cloud/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Optimization</title>
@@ -22,11 +49,38 @@
     </item>
     
     <item>
+      <title>Phi</title>
+      <link>/tags/phi/</link>
+      <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/phi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Profiling</title>
       <link>/tags/profiling/</link>
       <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/profiling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/tags/python/</link>
+      <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Synthetic Data</title>
+      <link>/tags/synthetic-data/</link>
+      <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/synthetic-data/</guid>
       <description></description>
     </item>
     

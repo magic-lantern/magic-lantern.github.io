@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Seth Russell</title>
-    <link>/post/</link>
-    <description>Recent content in Posts on Seth Russell</description>
+    <title>Python on Seth Russell</title>
+    <link>/tags/python/</link>
+    <description>Recent content in Python on Seth Russell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Seth Russell</copyright>
-    <lastBuildDate>Thu, 04 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>How to profile your R code that calls C/C&#43;&#43; </title>
-      <link>/2018/10/04/2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus/</link>
-      <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/2018/10/04/2018-10-04-how-to-profile-your-r-code-that-calls-c-c-plus-plus/</guid>
-      <description>While there are many options for profiling C++ (or other compiled code) on Linux, many of those tools are difficult to get working correctly with R. Additionally, profiling R code with C++ is complicated due to different settings between various commonly use OSes. While there are some blog posts and presentation materials available on the Internet, many miss important steps that take some effort to determine the correct solution to resolve.</description>
-    </item>
     
     <item>
       <title>Example of Python data analysis</title>
