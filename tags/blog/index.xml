@@ -7,10 +7,109 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Fri, 05 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Oct 2018 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using Google Compute Engine as host for RStudio Server</title>
+      <link>/2018/10/15/2018-10-15-using-google-compute-engine-as-host-for-rstudio-server/</link>
+      <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/10/15/2018-10-15-using-google-compute-engine-as-host-for-rstudio-server/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; This post is a work in progress. Need to verify websockets setup - if it works, document here!&lt;/p&gt;
+
+&lt;p&gt;Google Cloud has a wide range of services available. &lt;a href=&#34;https://www.rstudio.com/products/rstudio-server-pro/&#34;&gt;RStudio Server&lt;/a&gt;  (&lt;a href=&#34;https://www.rstudio.com/products/rstudio/download-server/&#34;&gt;download&lt;/a&gt;), is feature comparable to the desktop software &lt;a href=&#34;https://www.rstudio.com/products/rstudio/&#34;&gt;RStudio IDE&lt;/a&gt;. RStudio Server is available under two different licensing models: &amp;ldquo;Open Source Edition: (AGPL v3), and &amp;ldquo;Commercial License.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;In this post, I&amp;rsquo;ll be setting up the Open Source Edition. Total estimated cost per month if the system is running 24x7: $202.68/month. Cost is much less if you only run the system as needed (business hours only would cost about $45/month)&lt;/p&gt;
+
+&lt;p&gt;Steps:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create new GCE
+
+&lt;ol&gt;
+&lt;li&gt;Navigate to &lt;a href=&#34;https://console.cloud.google.com&#34;&gt;https://console.cloud.google.com&lt;/a&gt;. If you don&amp;rsquo;t already have an account, you can setup a free account with $300 credits for 365 days.&lt;/li&gt;
+&lt;li&gt;From the navigation menu (top left), select &amp;ldquo;Compute Engine&amp;rdquo; (under &amp;lsquo;COMPUTE&amp;rsquo;) -&amp;gt; &amp;ldquo;VM Instances&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Click &amp;ldquo;CREATE INSTANCE&amp;rdquo; at the top of the page&lt;/li&gt;
+&lt;li&gt;Name your instance as desired.&lt;/li&gt;
+&lt;li&gt;Pcik desired zone. I selected us-central1 (as that zonehas GPU availability should I want that feature in the future)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Machine type&lt;/strong&gt;: I selected &lt;strong&gt;8 CPU 30GB RAM (n1-standard-8)&lt;/strong&gt; based on estimated resources needed. This host will support 6 Data Scientist; you can always scale this up or down as needed after VM creation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Boot Disk&lt;/strong&gt;: Click change - select &lt;strong&gt;Ubuntu 18.04 LTS minimal&lt;/strong&gt; - LTS minimal installs very few packages by default, keeping disk usage minimized. Most Linux distributions are free to use, but not all OSes are; some have an hourly charge.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Boot Disk&lt;/strong&gt;: Recommend setting size to 50GB and selecting &lt;strong&gt;Boot Disk Type&lt;/strong&gt; to SSD. While an SSD will cost $8/more per month than standard persistent disk when running 24x7, it also performs much better when using local files.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Firewall&lt;/strong&gt;: Check both boxes to allow HTTP and HTTPS traffic.&lt;/li&gt;
+&lt;li&gt;Click &amp;ldquo;Create&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Static IP Address setup&lt;/strong&gt;:
+
+&lt;ol&gt;
+&lt;li&gt;Once machine is up (takes perhaps 30 seconds), click the machine name&lt;/li&gt;
+&lt;li&gt;Scroll down to the &amp;ldquo;Network Interfaces&amp;rdquo; section and click &amp;ldquo;View Details&amp;rdquo; in the &amp;ldquo;Network Details&amp;rdquo; column.&lt;/li&gt;
+&lt;li&gt;From the left menu &amp;ldquo;VPC Network&amp;rdquo;, select &amp;ldquo;External IP addresses&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;In the &amp;ldquo;Type&amp;rdquo; column, click the drop down to change from &amp;ldquo;Ephemeral&amp;rdquo; to &amp;ldquo;Static&amp;rdquo;. A static ip reservation results in a constant but small ongoing charge.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Basic machine setup: One the VM Instance page, in the &amp;ldquo;Connect&amp;rdquo; column, click &amp;ldquo;SSH&amp;rdquo;. Once the SSH window pops up, run these commands
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get install htop tmux dialog vim lsof less&lt;/code&gt; This installs a few basic tools that I find to be helpful&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo adduser &amp;lt;name&amp;gt;&lt;/code&gt; Add users as appropriate. RStudio Server uses local accounts to control access to the web UI.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Install R and RStudio. I selected to install R 3.5.x by following instructions at &lt;a href=&#34;https://cran.rstudio.com/bin/linux/ubuntu/README.html&#34;&gt;https://cran.rstudio.com/bin/linux/ubuntu/README.html&lt;/a&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get update&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get upgrade&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;add this line to /etc/apt/sources.list: &lt;code&gt;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get install r-base r-base-dev gdebi-core&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wget https://download2.rstudio.org/rstudio-server-1.1.456-amd64.deb&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo gdebi rstudio-server-1.1.456-amd64.deb&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Run R and install additional desired packages. &lt;em&gt;Note:&lt;/em&gt; Installing packages as root installs those packages for all uesrs.
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get install libssl-dev libcurl4-openssl-dev libxml2-dev wget&lt;/code&gt; This fullfills some dependency requirements for desired packages.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo R&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;install.packages(c(&#39;tidyverse&#39;, &#39;bigrquery&#39;, &#39;devtools&#39;))&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Verify packages have been installed correctly: &lt;code&gt;require(&amp;quot;dplyr&amp;quot;)&lt;/code&gt; and &lt;code&gt;require(&#39;bigrquery&#39;)&lt;/code&gt; etc.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Install Nginx and add Let&amp;rsquo;s Encrypt SSL cert &lt;a href=&#34;https://certbot.eff.org/lets-encrypt/ubuntubionic-nginx&#34;&gt;https://certbot.eff.org/lets-encrypt/ubuntubionic-nginx&lt;/a&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get install nginx software-properties-common&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo add-apt-repository ppa:certbot/certbot&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get update&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get install python-certbot-nginx&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Create a new nginx configuration file by copying the default configuration:
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/rstudio-server&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Remove the default site from being served, but keep the configuration for reference: &lt;code&gt;sudo rm /etc/nginx/sites-enabled/default&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Make sure Nginx still works - &lt;code&gt;sudo systemctl restart nginx&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo certbot --nginx&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Setup Nginx to proxy RStudio Server via https port. Follow instructions similar to &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins&#34;&gt;https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins&lt;/a&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Modify the :443 portion to do the https proxy - see location{} section&lt;/li&gt;
+&lt;li&gt;Resulting nginx configuration file should look like: &lt;a href=&#34;https://gist.github.com/magic-lantern/1b5e11c3cf5964b69e8e7824df015c5d&#34;&gt;https://gist.github.com/magic-lantern/1b5e11c3cf5964b69e8e7824df015c5d&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Some URLs for additional information:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;General setup: &lt;a href=&#34;https://towardsdatascience.com/running-jupyter-notebook-in-google-cloud-platform-in-15-min-61e16da34d52&#34;&gt;https://towardsdatascience.com/running-jupyter-notebook-in-google-cloud-platform-in-15-min-61e16da34d52&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Static IP Address: &lt;a href=&#34;https://cloud.google.com/compute/pricing?hl=en_US&amp;amp;_ga=2.8427253.-1719922974.1503442674#ipaddress&#34;&gt;https://cloud.google.com/compute/pricing?hl=en_US&amp;amp;_ga=2.8427253.-1719922974.1503442674#ipaddress&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Network Tier Pricing: &lt;a href=&#34;https://cloud.google.com/network-tiers/pricing&#34;&gt;https://cloud.google.com/network-tiers/pricing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Nginx as a reverse proxy: &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins&#34;&gt;https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Starting and Stoping the RStudio Server Service: &lt;a href=&#34;https://support.rstudio.com/hc/en-us/articles/200532327-Managing-the-Server&#34;&gt;https://support.rstudio.com/hc/en-us/articles/200532327-Managing-the-Server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;RStudio Server setup using PAM and Apache : &lt;a href=&#34;https://jstaf.github.io/2018/06/20/rstudio-server-semi-pro.html&#34;&gt;https://jstaf.github.io/2018/06/20/rstudio-server-semi-pro.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>How to profile your R code that calls C/C&#43;&#43; </title>
