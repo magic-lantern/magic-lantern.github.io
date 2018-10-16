@@ -7,10 +7,169 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 04 Oct 2018 02:13:50 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Oct 2018 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/page/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Seth Russell curriculum vitae</title>
+      <link>/page/cv/</link>
+      <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/page/cv/</guid>
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#professional-experience&#34;&gt;Professional Experience&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#selected-skills&#34;&gt;Selected Skills&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#education&#34;&gt;Education&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#technical-training&#34;&gt;Technical Training&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#licenses-and-certifications&#34;&gt;Licenses and Certifications&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#technical-presentations&#34;&gt;Technical Presentations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#publications&#34;&gt;Publications&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;professional-experience&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Professional Experience&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Research Instructor&lt;/strong&gt; – University of Colorado Denver Anschutz Medical Campus, Aurora, CO&lt;br /&gt;
+June 2017 – Present&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Major contributor as Senior Analyst and Data Scientist in the Analytics core of &lt;a href=&#34;http://cud2v.org&#34;&gt;CU Data Science to Patient Value&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Participated in requirements gathering, vendor review, and cloud platform solution evaluation for cloud hosted research analytics environment.&lt;/li&gt;
+&lt;li&gt;Developed R package for identifying pediatric complex chronic conditions based on ICD9/ICD10 codes.&lt;/li&gt;
+&lt;li&gt;Created comparitive analysis of custom sepsis prediction model vs Epic sepsis model&lt;/li&gt;
+&lt;li&gt;Developed Python Pandas extension for data synthesis&lt;/li&gt;
+&lt;li&gt;Aided in defining and evaluating cloud based platform for computational researchers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Senior Software Engineer&lt;/strong&gt; Intermountain Healthcare Transformation Lab, Salt Lake City, UT&lt;br /&gt;
+October 2014 – May 2017&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Research and prototyping of new software and hardware technologies for health care applications.&lt;/li&gt;
+&lt;li&gt;Developed in-patient communication and engagement platforms that integrated Cerner data via Millennium Objects, environmental lighting and HVAC controls, patient education, speech recognition, natural language processing, Solr integration, and other technologies.&lt;/li&gt;
+&lt;li&gt;Evaluation of Real Time Location Services (RTLS) and data mining of RTLS data as part of process to determine best RTLS solution and systems for health care needs. Evaluation included writing of health care specific RTLS asset tracking/management white paper.&lt;/li&gt;
+&lt;li&gt;Created video feedback recording station for conference floor feedback&lt;/li&gt;
+&lt;li&gt;Created prototype voice and text translation application for use in clinical settings&lt;/li&gt;
+&lt;li&gt;Analyze data from pilot projects through market comparison, sample size calculations, power calculations, data visualization, and regression analysis.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Senior Software Engineer, Team Lead&lt;/strong&gt; Intermountain Healthcare, Salt Lake City, UT&lt;br /&gt;
+August 2008 – October 2014&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lead a team of experienced Software Engineers and Application Administrators that specialize in corporate solutions in the domain of financial and administrative needs for healthcare.&lt;/li&gt;
+&lt;li&gt;Managed department level yearly operating budget (2.5+ million) as well as IT capital budget requests as needs arose.&lt;/li&gt;
+&lt;li&gt;Guide, support, and participate in the development of custom applications as well as COTS applications that interface with and extend Oracle’s E-Business (HRMS), our custom general ledger, Kronos Workforce Scheduler/Time Keeper/Analytics, Oracle’s Hyperion Essbase/Planning, and Optilink+.&lt;/li&gt;
+&lt;li&gt;Support Central Operating Budget group by extending, maintaining, and upgrading Oracle Hyperion Essbase, Oracle Hyperion Planning, Oracle Application Express (Apex), various MS Access applications, and VBA in MS Excel.&lt;/li&gt;
+&lt;li&gt;Developed and maintained custom ETL and Oracle Data Integrator processes between a custom and vended systems in support of financial and administrative business needs.&lt;/li&gt;
+&lt;li&gt;Brought about major shifts in the team’s software development practices including load testing/test automation, use of Java Stored Procedures in the Oracle database, and migration of software versioning systems from Serena Changeman/PVCS to Subversion.&lt;/li&gt;
+&lt;li&gt;Other leadership areas include performing Financial Reporting Controls audits (SOX for non-profits), creation and review of disaster recovery plans, creation and monitoring of operating and capital budgets.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Software Engineer Consultant&lt;/strong&gt;&lt;br /&gt;
+June 2003– January 2006, August 2008 – December 2008&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Improved Omniture integration with sporting goods e-commerce site.&lt;/li&gt;
+&lt;li&gt;Developed integration components for FAST search engine integration with e-commerce site.&lt;/li&gt;
+&lt;li&gt;Designed and developed a Java/XML based industrial refrigeration load calculation program – resulting in 3 1⁄2 hours time saved in calculations for engineers.&lt;/li&gt;
+&lt;li&gt;Designed and developed on-line application system (Perl, JavaScript, PostgreSQL) for people to apply to be stunt doubles.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Engineering Team Lead&lt;/strong&gt; Backcountry.com, Park City, UT&lt;br /&gt;
+July 2006 – August 2008&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lead teams of 3 – 8 engineers composed of junior to senior developers.&lt;/li&gt;
+&lt;li&gt;Lead engineering implementation of WhiskeyMilitia.com, Checkout Redesign, Question and Answer functionality, and site optimization efforts for $130M+ e-commerce site.&lt;/li&gt;
+&lt;li&gt;Organized software support processes using Bugzilla, MediaWiki, and frequent meetings with customers, leading to faster issue resolution and increased customer satisfaction&lt;/li&gt;
+&lt;li&gt;Provided technical direction, code reviews, and design guidance for team members&lt;/li&gt;
+&lt;li&gt;Developed new site functionality and interfaces using Perl and custom MVC framework (Moose, Rose::DB, and other CPAN modules), Interchange, Javascript/Ajax/YUI&lt;/li&gt;
+&lt;li&gt;Acted as a key participant in interviewing, hiring, and training new engineers&lt;/li&gt;
+&lt;li&gt;Lead migration of source code management from CVS to Git&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Programmer Analyst&lt;/strong&gt; University of California, Santa Cruz, CA&lt;br /&gt;
+September 2003 – February 2007&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modified Narrative Evaluation System to achieve integration of data with PeopleSoft Student Administration.&lt;/li&gt;
+&lt;li&gt;Extended the Graduate Admissions Review Portal to interface with PeopleSoft SA; stream- lined code and processes to improve application performance&lt;/li&gt;
+&lt;li&gt;Develop Financial Aid Extract to University of California Office of the President.&lt;/li&gt;
+&lt;li&gt;Met with customers, spec’d, and developed Identity Management extracts.&lt;/li&gt;
+&lt;li&gt;Designed and developed a template based Mass Mailing System&lt;/li&gt;
+&lt;li&gt;Installed and customized Bugzilla to use in tracking bugs with UCSC Academic Information Systems&lt;/li&gt;
+&lt;li&gt;Setup and administered CVS, PHP, Apache, MySQL, PeopleSoft SA and Portal, Cisco content switches, Cognos Business Intelligence suite, small applications Linux servers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Systems Analyst/Programmer&lt;/strong&gt; Central Washington University, Ellensburg, WA&lt;br /&gt;
+January 2002 – June 2003&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Extended and supported custom PowerHouse based Parking application on OpenVMS VAX.&lt;/li&gt;
+&lt;li&gt;Resolved desktop issues for student and staff users on Win95-XP and Mac desktops&lt;/li&gt;
+&lt;li&gt;Developed an inventory and sales management system with VB and MS Access to replace abandoned db4 system.&lt;/li&gt;
+&lt;li&gt;Technical advisor for process of replacing 15 year old parking management software.&lt;/li&gt;
+&lt;li&gt;Worked as part of a team to develop a call management system for user support using PHP, JavaScript, MySQL, Apache, and SSH on Linux.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Prior Experience&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I’ve been working for so long, previous experience is likely not relevant&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;selected-skills&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Selected Skills&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Software Engineering&lt;/strong&gt; Source Code Management, Model-View-Controller, Waterfall and Agile development methodologies, data model design, Object Relational Mapping, ETL&lt;br /&gt;
+&lt;strong&gt;Informatics&lt;/strong&gt; Clinical Decision Support, Information Retrieval, Information Extraction, HL7 Standards (HL7v2, FHIR, InfoButton), research design, statistical methods and analysis&lt;br /&gt;
+&lt;strong&gt;Business&lt;/strong&gt; Systems Lifecycle Analysis, Business Management, Software Project Management, Production Management, Scheduling, Statistical Analysis, Financial Analysis, Code Management, Reporting&lt;br /&gt;
+&lt;strong&gt;Database&lt;/strong&gt; PostgreSQL, SQLite, Essbase, Oracle (PL/SQL, Forms/Reports, Data Integrator), MySQL, MongoDB, SQL Server&lt;br /&gt;
+&lt;strong&gt;Operating Systems/Platforms&lt;/strong&gt; Linux (Redhat/Debian), Windows NT - 2012, macOS, Docker, VMware ESX, Solaris 8 &amp;amp; 10, OpenVMS 7.3, BSD&lt;br /&gt;
+&lt;strong&gt;Programming Languages&lt;/strong&gt; Python, R, Javascript, Java, Oracle APEX, C#, Perl, PHP, BASH, C/C++, Visual Basic/ASP (6 and .Net), SQR, PeopleCode, PowerHouse&lt;br /&gt;
+&lt;strong&gt;Web Frameworks/Utilites/Platforms&lt;/strong&gt; Ember.js, jQuery, Bootstrap, YUI, WebRTC, HTML5, CSS3, Nginx, Apache, Node.js, IIS, Weblogic&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;education&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Education&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Master of Science&lt;/strong&gt;&lt;br /&gt;
+Biomedical Informatics (2016) - Capstone Project: Identification and Automation of Quality Metrics for Radiology Reporting in CT Pulmonary Angiography&lt;br /&gt;
+University of Utah, Salt Lake City, UT&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Bachelor of Science&lt;/strong&gt;&lt;br /&gt;
+Business Administration (2003) Operations Management and IS Specialization&lt;br /&gt;
+Computer Science (2003) Artificial Intelligence Specialization&lt;br /&gt;
+Central Washington University, Ellensburg, WA&lt;br /&gt;
+&lt;em&gt;Summa Cum Laude&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;technical-training&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Technical Training&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Oracle SOA Suite&lt;/li&gt;
+&lt;li&gt;Oracle SOA Service Bus Design&lt;/li&gt;
+&lt;li&gt;Oracle Application Integration Architecture&lt;/li&gt;
+&lt;li&gt;123OLAP Applied Essbase&lt;/li&gt;
+&lt;li&gt;123OLAP Applied Planning&lt;/li&gt;
+&lt;li&gt;123OLAP Applied Planning Power User&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;licenses-and-certifications&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Licenses and Certifications&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Google Cloud Platform Essentials – Qwiklabs 2017&lt;/li&gt;
+&lt;li&gt;Citi, Human Research, Biomedical Research Investigators and Key Personnel – 2017&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youracclaim.com/badges/1da472f8-d67d-4d3f-a2c9-d205b6040a81/public_url&#34;&gt;Oracle Certified Associate, Java SE 8 Programmer&lt;/a&gt; - 2016&lt;/li&gt;
+&lt;li&gt;OWASP Top 10 Web Application Security – 2016&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.citiprogram.org/verify/?w0795e059-ab8e-4701-a5f4-7fd457b665a8-22064244&#34;&gt;Citi, Human Research, Biomedical Research Investigators and Key Personnel&lt;/a&gt; - 2016&lt;/li&gt;
+&lt;li&gt;Citi Responsible Conduct of Research – 2015&lt;/li&gt;
+&lt;li&gt;Cerner Millennium Foundation Certified – 2015&lt;/li&gt;
+&lt;li&gt;ITIL V3 Foundation Certified - 2010&lt;/li&gt;
+&lt;li&gt;FCC Amateur Radio License – General Class – 2010&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;technical-presentations&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Technical Presentations&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;An R Package: Pediatric Complex Chronic Conditions &amp;amp; Integrating Python and R &lt;em&gt;BIOS 6640 Nov 2017&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/magic-lantern/biostatistics-seminar-2017&#34;&gt;Data Science to Patient Value &amp;amp; KDD 2017&lt;/a&gt; &lt;em&gt;Biostatistics Seminar Sept 2017&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;CDS for Pediatric Antibiotics using SMART on FHIR &lt;em&gt;FHIR SIG April 2016&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;VirtualBox - How to setup and benefit from virtualization &lt;em&gt;Utah Oracle User’s Group Mar 2012&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Java Stored Procedures in an Oracle DB &lt;em&gt;Utah Oracle User’s Group Oct 2010&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;publications&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Publications&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Feinstein JA, Russell S, DeWitt PE, Feudtner C, Dai D, Bennett TD. &lt;a href=&#34;https://jamanetwork.com/journals/jamapediatrics/fullarticle/2677901&#34;&gt;R Package for Pediatric Complex Chronic Condition Classification&lt;/a&gt;. JAMA Pediatr. 2018;172(6):596-598. &lt;a href=&#34;doi:10.1001/jamapediatrics.2018.0256&#34; class=&#34;uri&#34;&gt;doi:10.1001/jamapediatrics.2018.0256&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Others currently under review related to current research at University of Colorado Anschutz Medical Campus&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>About</title>
@@ -24,7 +183,7 @@
 
 &lt;p&gt;As an infomatician and experienced software engineer I help with the crucial effort of improving health care and reducing health care costs through the appropriate use of information technology. My experience and education provides me with the ability to develop requirements, build solutions, and test the success of a chosen solution. I have experience with commercial software such as Cerner Millennium Electronic Health Record (EHR) and Oracle Hyperion, standards based platforms such as SMART on FHIR and InfoButtons, and build from scratch tools and techniques. My domains of interest are clinical information retrieval and extraction, imaging informatics, quality control and reporting, and the use of standards to improve the exchange of information as well as consistency of clinical care. As a software engineer and informatics researcher I&amp;rsquo;m always excited to try new tools and techniques and then make recommendations for their continued use or abandonment.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Coming Soon:&lt;/em&gt; CV&lt;/p&gt;
+&lt;p&gt;For more specifics, see &lt;a href=&#34;../cv/&#34;&gt;my cv&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

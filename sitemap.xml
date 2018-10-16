@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/page/cv/</loc>
+    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2018/10/15/2018-10-15-using-google-compute-engine-as-host-for-rstudio-server/</loc>
     <lastmod>2018-10-15T00:00:00+00:00</lastmod>
   </url>
@@ -64,7 +69,7 @@
   
   <url>
     <loc>/page/</loc>
-    <lastmod>2018-10-04T02:13:50+00:00</lastmod>
+    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
