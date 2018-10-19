@@ -18,11 +18,13 @@
       <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/10/15/2018-10-15-using-google-compute-engine-as-host-for-rstudio-server/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; This post is a work in progress. Need to verify websockets setup - if it works, document here!&lt;/p&gt;
+      <description>&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Last updated October 19, 2018. This post is a work in progress.&lt;/p&gt;
 
-&lt;p&gt;Google Cloud has a wide range of services available. &lt;a href=&#34;https://www.rstudio.com/products/rstudio-server-pro/&#34;&gt;RStudio Server&lt;/a&gt;  (&lt;a href=&#34;https://www.rstudio.com/products/rstudio/download-server/&#34;&gt;download&lt;/a&gt;), is feature comparable to the desktop software &lt;a href=&#34;https://www.rstudio.com/products/rstudio/&#34;&gt;RStudio IDE&lt;/a&gt;. RStudio Server is available under two different licensing models: &amp;ldquo;Open Source Edition: (AGPL v3), and &amp;ldquo;Commercial License.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.rstudio.com/products/rstudio-server-pro/&#34;&gt;RStudio Server&lt;/a&gt;  (&lt;a href=&#34;https://www.rstudio.com/products/rstudio/download-server/&#34;&gt;download&lt;/a&gt;), is feature comparable to the desktop software &lt;a href=&#34;https://www.rstudio.com/products/rstudio/&#34;&gt;RStudio IDE&lt;/a&gt;. RStudio Server is available under two different licensing models: &amp;ldquo;Open Source Edition: (AGPL v3), and &amp;ldquo;Commercial License.&amp;rdquo;&lt;/p&gt;
 
-&lt;p&gt;In this post, I&amp;rsquo;ll be setting up the Open Source Edition. Total estimated cost per month if the system is running 24x7: $202.68/month. Cost is much less if you only run the system as needed (business hours only would cost about $45/month)&lt;/p&gt;
+&lt;p&gt;Google Cloud has a wide range of services available. Everything from machine learning APIs to development environments to database as a service. However, one thing they don&amp;rsquo;t have is a good R environment for development of R packages or analysis. I&amp;rsquo;ve found the most flexible option to get a great R environment on Google Cloud is to use a Google Compute Engine instance (GCE) - Google&amp;rsquo;s cloud hosted virtual machine platform.&lt;/p&gt;
+
+&lt;p&gt;In this post, I&amp;rsquo;ll be setting up the Open Source Edition of RStudio Server. Total estimated cost per month if the system is running 24x7: $202.68/month. Cost is much less if you only run the system as needed (business hours only would cost about $45/month)&lt;/p&gt;
 
 &lt;p&gt;Steps:&lt;/p&gt;
 
@@ -90,11 +92,42 @@
 &lt;/ol&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;sudo certbot --nginx&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;Setup Nginx to proxy RStudio Server via https port. Follow instructions similar to &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins&#34;&gt;https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins&lt;/a&gt;
+
+&lt;li&gt;&lt;p&gt;Setup Nginx to proxy RStudio Server via https port. Follow instructions similar to &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins&#34;&gt;https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins&lt;/a&gt; and &lt;a href=&#34;https://support.rstudio.com/hc/en-us/articles/200552326-Configuring-the-Server/&#34;&gt;https://support.rstudio.com/hc/en-us/articles/200552326-Configuring-the-Server/&lt;/a&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Modify the :443 portion to do the https proxy - see location{} section&lt;/li&gt;
-&lt;li&gt;Resulting nginx configuration file should look like: &lt;a href=&#34;https://gist.github.com/magic-lantern/1b5e11c3cf5964b69e8e7824df015c5d&#34;&gt;https://gist.github.com/magic-lantern/1b5e11c3cf5964b69e8e7824df015c5d&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Modify the :443 portion to do the https proxy - this goes in a location{} section; the key lines are:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;proxy_set_header        Host $host;
+proxy_set_header        X-Real-IP $remote_addr;
+proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header        X-Forwarded-Proto $scheme;
+# adjust these two lines to match your RStudio Server port
+proxy_pass          http://localhost:8787;
+proxy_redirect      http://localhost:8787 $scheme://$http_host/;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;In order to get the websockets component working, you need to modify /etc/nginx/nginx.conf and add the following section inside the http{} block:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;map $http_upgrade $connection_upgrade {
+default upgrade;
+&#39;&#39;      close;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add the following lines to your server{} block:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;proxy_http_version 1.1;
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection $connection_upgrade;
+proxy_read_timeout 7d; # want something long so websocket doesn&#39;t automatcailly close on user
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Symlink your &lt;code&gt;/etc/nginx/sites-available&lt;/code&gt; file to &lt;code&gt;/etc/nginx/sites-enabled&lt;/code&gt; sites-enabled is the directory that the nginx server will look in when starting up.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Resulting nginx configuration file should look like: &lt;a href=&#34;https://gist.github.com/magic-lantern/1b5e11c3cf5964b69e8e7824df015c5d&#34;&gt;https://gist.github.com/magic-lantern/1b5e11c3cf5964b69e8e7824df015c5d&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Before restarting nginx, test your configuration by running &lt;code&gt;nginx -t&lt;/code&gt;. Fix any errors before restarting with &lt;code&gt;systemctl restart nginx&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ol&gt;
 

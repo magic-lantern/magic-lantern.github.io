@@ -4,18 +4,14 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Using Google Compute Engine as host for RStudio Server &middot; Seth Russell</title>
-        <meta name="description" content="Note: This post is a work in progress. Need to verify websockets setup - if it works, document here!
-Google Cloud has a wide range of services available. RStudio Server (download), is feature comparable to the desktop software RStudio IDE. RStudio Server is available under two different licensing models: &ldquo;Open Source Edition: (AGPL v3), and &ldquo;Commercial License.&rdquo;
-In this post, I&rsquo;ll be setting up the Open Source Edition. Total estimated cost per month if the system is running 24x7: $202.">
+        <meta name="description" content="How to setup a Google Compute Engine instance to host your own RStudio Server">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="generator" content="Hugo 0.49" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="Using Google Compute Engine as host for RStudio Server">
-<meta property="og:description" content="Note: This post is a work in progress. Need to verify websockets setup - if it works, document here!
-Google Cloud has a wide range of services available. RStudio Server (download), is feature comparable to the desktop software RStudio IDE. RStudio Server is available under two different licensing models: &ldquo;Open Source Edition: (AGPL v3), and &ldquo;Commercial License.&rdquo;
-In this post, I&rsquo;ll be setting up the Open Source Edition. Total estimated cost per month if the system is running 24x7: $202.">
+<meta property="og:description" content="How to setup a Google Compute Engine instance to host your own RStudio Server">
 <meta property="og:type" content="article">
 <meta property="og:url" content="/2018/10/15/2018-10-15-using-google-compute-engine-as-host-for-rstudio-server/">
         <link rel="stylesheet" href="/dist/styles.css">
@@ -105,6 +101,8 @@ if (!doNotTrack) {
         <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Using Google Compute Engine as host for RStudio Server</h1>
     
+        <p class="post-description" itemprop="description">How to setup a Google Compute Engine instance to host your own RStudio Server</p>
+    
     <p class="post-date">
         <span>Published <time datetime="2018-10-15" itemprop="datePublished">Mon, Oct 15, 2018</time></span>
         <span>by</span>
@@ -119,11 +117,13 @@ if (!doNotTrack) {
         <div class="post-content clearfix" itemprop="articleBody">
     
 
-    <p><em>Note:</em> This post is a work in progress. Need to verify websockets setup - if it works, document here!</p>
+    <p><em>Note:</em> Last updated October 19, 2018. This post is a work in progress.</p>
 
-<p>Google Cloud has a wide range of services available. <a href="https://www.rstudio.com/products/rstudio-server-pro/">RStudio Server</a>  (<a href="https://www.rstudio.com/products/rstudio/download-server/">download</a>), is feature comparable to the desktop software <a href="https://www.rstudio.com/products/rstudio/">RStudio IDE</a>. RStudio Server is available under two different licensing models: &ldquo;Open Source Edition: (AGPL v3), and &ldquo;Commercial License.&rdquo;</p>
+<p><a href="https://www.rstudio.com/products/rstudio-server-pro/">RStudio Server</a>  (<a href="https://www.rstudio.com/products/rstudio/download-server/">download</a>), is feature comparable to the desktop software <a href="https://www.rstudio.com/products/rstudio/">RStudio IDE</a>. RStudio Server is available under two different licensing models: &ldquo;Open Source Edition: (AGPL v3), and &ldquo;Commercial License.&rdquo;</p>
 
-<p>In this post, I&rsquo;ll be setting up the Open Source Edition. Total estimated cost per month if the system is running 24x7: $202.68/month. Cost is much less if you only run the system as needed (business hours only would cost about $45/month)</p>
+<p>Google Cloud has a wide range of services available. Everything from machine learning APIs to development environments to database as a service. However, one thing they don&rsquo;t have is a good R environment for development of R packages or analysis. I&rsquo;ve found the most flexible option to get a great R environment on Google Cloud is to use a Google Compute Engine instance (GCE) - Google&rsquo;s cloud hosted virtual machine platform.</p>
+
+<p>In this post, I&rsquo;ll be setting up the Open Source Edition of RStudio Server. Total estimated cost per month if the system is running 24x7: $202.68/month. Cost is much less if you only run the system as needed (business hours only would cost about $45/month)</p>
 
 <p>Steps:</p>
 
@@ -191,11 +191,42 @@ if (!doNotTrack) {
 </ol></li>
 <li><code>sudo certbot --nginx</code></li>
 </ol></li>
-<li>Setup Nginx to proxy RStudio Server via https port. Follow instructions similar to <a href="https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins">https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins</a>
+
+<li><p>Setup Nginx to proxy RStudio Server via https port. Follow instructions similar to <a href="https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins">https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-with-ssl-as-a-reverse-proxy-for-jenkins</a> and <a href="https://support.rstudio.com/hc/en-us/articles/200552326-Configuring-the-Server/">https://support.rstudio.com/hc/en-us/articles/200552326-Configuring-the-Server/</a></p>
 
 <ol>
-<li>Modify the :443 portion to do the https proxy - see location{} section</li>
-<li>Resulting nginx configuration file should look like: <a href="https://gist.github.com/magic-lantern/1b5e11c3cf5964b69e8e7824df015c5d">https://gist.github.com/magic-lantern/1b5e11c3cf5964b69e8e7824df015c5d</a></li>
+<li><p>Modify the :443 portion to do the https proxy - this goes in a location{} section; the key lines are:</p>
+
+<pre><code>proxy_set_header        Host $host;
+proxy_set_header        X-Real-IP $remote_addr;
+proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header        X-Forwarded-Proto $scheme;
+# adjust these two lines to match your RStudio Server port
+proxy_pass          http://localhost:8787;
+proxy_redirect      http://localhost:8787 $scheme://$http_host/;
+</code></pre></li>
+
+<li><p>In order to get the websockets component working, you need to modify /etc/nginx/nginx.conf and add the following section inside the http{} block:</p>
+
+<pre><code>map $http_upgrade $connection_upgrade {
+default upgrade;
+''      close;
+}
+</code></pre></li>
+
+<li><p>Add the following lines to your server{} block:</p>
+
+<pre><code>proxy_http_version 1.1;
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection $connection_upgrade;
+proxy_read_timeout 7d; # want something long so websocket doesn't automatcailly close on user
+</code></pre></li>
+
+<li><p>Symlink your <code>/etc/nginx/sites-available</code> file to <code>/etc/nginx/sites-enabled</code> sites-enabled is the directory that the nginx server will look in when starting up.</p></li>
+
+<li><p>Resulting nginx configuration file should look like: <a href="https://gist.github.com/magic-lantern/1b5e11c3cf5964b69e8e7824df015c5d">https://gist.github.com/magic-lantern/1b5e11c3cf5964b69e8e7824df015c5d</a></p></li>
+
+<li><p>Before restarting nginx, test your configuration by running <code>nginx -t</code>. Fix any errors before restarting with <code>systemctl restart nginx</code></p></li>
 </ol></li>
 </ol>
 
@@ -252,7 +283,7 @@ if (!doNotTrack) {
             </a>
         
         
-            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Using%20Google%20Compute%20Engine%20as%20host%20for%20RStudio%20Server&url=%2f2018%2f10%2f15%2f2018-10-15-using-google-compute-engine-as-host-for-rstudio-server%2f&summary="
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Using%20Google%20Compute%20Engine%20as%20host%20for%20RStudio%20Server&url=%2f2018%2f10%2f15%2f2018-10-15-using-google-compute-engine-as-host-for-rstudio-server%2f&summary=How%20to%20setup%20a%20Google%20Compute%20Engine%20instance%20to%20host%20your%20own%20RStudio%20Server"
                onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
                <i class="fa fa-linkedin"></i>
                <span class="hidden">LinkedIn</span>
