@@ -64,7 +64,7 @@
 &lt;li&gt;&lt;code&gt;sudo apt-get upgrade&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;add this line to /etc/apt/sources.list: &lt;code&gt;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sudo apt-get install r-base r-base-dev gdebi-core&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get install r-base r-base-dev gdebi-core git subversion&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;wget https://download2.rstudio.org/rstudio-server-1.1.456-amd64.deb&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;sudo gdebi rstudio-server-1.1.456-amd64.deb&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
@@ -73,7 +73,7 @@
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;sudo apt-get install libssl-dev libcurl4-openssl-dev libxml2-dev wget&lt;/code&gt; This fullfills some dependency requirements for desired packages.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;sudo R&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;install.packages(c(&#39;tidyverse&#39;, &#39;bigrquery&#39;, &#39;devtools&#39;))&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;install.packages(c(&#39;tidyverse&#39;, &#39;bigrquery&#39;, &#39;devtools&#39;, &#39;shiny&#39;, &#39;caTools&#39;, &#39;bitops&#39;))&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Verify packages have been installed correctly: &lt;code&gt;require(&amp;quot;dplyr&amp;quot;)&lt;/code&gt; and &lt;code&gt;require(&#39;bigrquery&#39;)&lt;/code&gt; etc.&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;li&gt;Install Nginx and add Let&amp;rsquo;s Encrypt SSL cert &lt;a href=&#34;https://certbot.eff.org/lets-encrypt/ubuntubionic-nginx&#34;&gt;https://certbot.eff.org/lets-encrypt/ubuntubionic-nginx&lt;/a&gt;
@@ -124,6 +124,20 @@ proxy_read_timeout 7d; # want something long so websocket doesn&#39;t automatcai
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Symlink your &lt;code&gt;/etc/nginx/sites-available&lt;/code&gt; file to &lt;code&gt;/etc/nginx/sites-enabled&lt;/code&gt; sites-enabled is the directory that the nginx server will look in when starting up.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Optional Step: Force all http traffic to redirect to https (certbot can set this up for you if you want):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;server {
+  if ($host = yourdomain.tld) {
+      return 301 https://$host$request_uri;
+  } # managed by Certbot
+      
+     listen 80 ;
+     listen [::]:80 ;
+  server_name yourdomain.tld;
+  return 404; # managed by Certbot
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Resulting nginx configuration file should look like: &lt;a href=&#34;https://gist.github.com/magic-lantern/1b5e11c3cf5964b69e8e7824df015c5d&#34;&gt;https://gist.github.com/magic-lantern/1b5e11c3cf5964b69e8e7824df015c5d&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
