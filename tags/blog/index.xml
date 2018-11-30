@@ -18,7 +18,7 @@
       <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/10/15/2018-10-15-using-google-compute-engine-as-host-for-rstudio-server/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Last updated October 26, 2018. This post is a work in progress.&lt;/p&gt;
+      <description>&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Last updated November 30, 2018. This post is a work in progress.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.rstudio.com/products/rstudio-server-pro/&#34;&gt;RStudio Server&lt;/a&gt;  (&lt;a href=&#34;https://www.rstudio.com/products/rstudio/download-server/&#34;&gt;download&lt;/a&gt;), is feature comparable to the desktop software &lt;a href=&#34;https://www.rstudio.com/products/rstudio/&#34;&gt;RStudio IDE&lt;/a&gt;. RStudio Server is available under two different licensing models: &amp;ldquo;Open Source Edition: (AGPL v3), and &amp;ldquo;Commercial License.&amp;rdquo;&lt;/p&gt;
 
@@ -64,7 +64,7 @@
 &lt;li&gt;&lt;code&gt;sudo apt-get upgrade&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;add this line to /etc/apt/sources.list: &lt;code&gt;deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sudo apt-get install r-base r-base-dev gdebi-core git subversion texlive texlive-latex-extra&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get install r-base r-base-dev pandoc gdebi-core git subversion texlive texlive-latex-extra&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;wget https://download2.rstudio.org/rstudio-server-1.1.456-amd64.deb&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;sudo gdebi rstudio-server-1.1.456-amd64.deb&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;

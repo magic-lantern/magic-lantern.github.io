@@ -7,7 +7,7 @@
         <meta name="description" content="How to setup a Google Compute Engine instance to host your own RStudio Server">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <meta name="generator" content="Hugo 0.49" />
+        <meta name="generator" content="Hugo 0.52" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="Using Google Compute Engine as host for RStudio Server">
@@ -117,7 +117,7 @@ if (!doNotTrack) {
         <div class="post-content clearfix" itemprop="articleBody">
     
 
-    <p><em>Note:</em> Last updated October 26, 2018. This post is a work in progress.</p>
+    <p><em>Note:</em> Last updated November 30, 2018. This post is a work in progress.</p>
 
 <p><a href="https://www.rstudio.com/products/rstudio-server-pro/">RStudio Server</a>  (<a href="https://www.rstudio.com/products/rstudio/download-server/">download</a>), is feature comparable to the desktop software <a href="https://www.rstudio.com/products/rstudio/">RStudio IDE</a>. RStudio Server is available under two different licensing models: &ldquo;Open Source Edition: (AGPL v3), and &ldquo;Commercial License.&rdquo;</p>
 
@@ -163,7 +163,7 @@ if (!doNotTrack) {
 <li><code>sudo apt-get upgrade</code></li>
 <li><code>apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9</code></li>
 <li>add this line to /etc/apt/sources.list: <code>deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/</code></li>
-<li><code>sudo apt-get install r-base r-base-dev gdebi-core git subversion texlive texlive-latex-extra</code></li>
+<li><code>sudo apt-get install r-base r-base-dev pandoc gdebi-core git subversion texlive texlive-latex-extra</code></li>
 <li><code>wget https://download2.rstudio.org/rstudio-server-1.1.456-amd64.deb</code></li>
 <li><code>sudo gdebi rstudio-server-1.1.456-amd64.deb</code></li>
 </ol></li>
