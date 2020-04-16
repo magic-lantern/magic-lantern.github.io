@@ -7,20 +7,22 @@
         <meta name="description" content="When profiling R code, the details and performance of any C/C&#43;&#43; code is hidden behind .Call(). This post describes how to get details on what the C/C&#43;&#43; code is doing.">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <meta name="generator" content="Hugo 0.54.0" />
+        <meta name="generator" content="Hugo 0.66.0" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="How to profile your R code that calls C/C&#43;&#43; ">
 <meta property="og:description" content="When profiling R code, the details and performance of any C/C&#43;&#43; code is hidden behind .Call(). This post describes how to get details on what the C/C&#43;&#43; code is doing.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="/2018/10/05/2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus/">
-        <link rel="stylesheet" href="/dist/styles.css">
+<meta property="og:url" content="https://magic-lantern.github.io/2018/10/05/2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus/">
+        <link rel="stylesheet" href="https://magic-lantern.github.iodist/site.css">
+        <link rel="stylesheet" href="https://magic-lantern.github.iodist/syntax.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         
-        <link rel="stylesheet" href="/css/github.css" rel="stylesheet" id="theme-stylesheet">
-<script src="/js/highlight.pack.js"></script>
+        <link rel="stylesheet" href="https://magic-lantern.github.io/css/github.css" rel="stylesheet" id="theme-stylesheet">
+<script src="https://magic-lantern.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+        
         
     </head>
     <body>
@@ -46,24 +48,25 @@ if (!doNotTrack) {
                     <div class="site-title-wrapper">
                         
                             <h1 class="site-title">
-                                <a title="Seth Russell" href="/">Seth Russell</a>
+                                <a title="Seth Russell" href="https://magic-lantern.github.io">Seth Russell</a>
                             </h1>
                         
-                        <a class="button-square" href="/index.xml"><i class="fa fa-rss"></i></a>
+                        <a class="button-square" href="https://magic-lantern.github.ioindex.xml"><i class="fa fa-rss"></i></a>
                         
-                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/magic__lantern">
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/magic__lantern" rel="me">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         
                         
                         
-                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/magic-lantern">
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/magic-lantern" rel="me">
                                 <i class="fa fa-github-alt"></i>
                             </a>
                         
                         
                         
-                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/seth-russell">
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/seth-russell" rel="me">
                                 <i class="fa fa-linkedin"></i>
                             </a>
                         
@@ -103,7 +106,7 @@ if (!doNotTrack) {
     
         <p class="post-description" itemprop="description">When profiling R code, the details and performance of any C/C&#43;&#43; code is hidden behind .Call(). This post describes how to get details on what the C/C&#43;&#43; code is doing.</p>
     
-    <p class="post-date">
+    <p class="post-date post-line">
         <span>Published <time datetime="2018-10-05" itemprop="datePublished">Fri, Oct 5, 2018</time></span>
         <span>by</span>
         <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
@@ -112,110 +115,87 @@ if (!doNotTrack) {
             </span>
         </span>
     </p>
+    
 </header>
 
         <div class="post-content clearfix" itemprop="articleBody">
     
 
-    
-
-<p>Software optimization is a key aspect of software development, especially when working with large datasets. The only way to know if your software will perform adequately under ideal (and non-ideal) circumstances is to use a careful combination of tests and benchmarking/code profiling tools. Code profilers show how a software behaves and what functions are being called while benchmarking tools generally focus on just execution time. Some tools combine both profiling and benchmarking. In R, some of the common tools to help with this are <a href="https://github.com/joshuaulrich/microbenchmark/">microbenchmark</a>, <a href="http://collectivemedia.github.io/tictoc/">tictoc</a>, Rprof (from R utils package), <a href="https://CRAN.R-project.org/package=proftools">proftools</a>, and <a href="https://rstudio.github.io/profvis/">profvis</a>. All of the R based tools have limitations with respect to insight into performance of compiled code: visibility stops at the .Call() function. In order to get around this limitation, the use of a more general purpose profiling tool is required.</p>
-
+    <p>Software optimization is a key aspect of software development, especially when working with large datasets. The only way to know if your software will perform adequately under ideal (and non-ideal) circumstances is to use a careful combination of tests and benchmarking/code profiling tools. Code profilers show how a software behaves and what functions are being called while benchmarking tools generally focus on just execution time. Some tools combine both profiling and benchmarking. In R, some of the common tools to help with this are <a href="https://github.com/joshuaulrich/microbenchmark/">microbenchmark</a>, <a href="http://collectivemedia.github.io/tictoc/">tictoc</a>, Rprof (from R utils package), <a href="https://CRAN.R-project.org/package=proftools">proftools</a>, and <a href="https://rstudio.github.io/profvis/">profvis</a>. All of the R based tools have limitations with respect to insight into performance of compiled code: visibility stops at the .Call() function. In order to get around this limitation, the use of a more general purpose profiling tool is required.</p>
 <p>While there are many options for profiling C/C++ (or other compiled code) on Linux, many of those tools are difficult to get working correctly with R. Non-Linux users and developers may not be familiar with tools available on their respective platforms. Furthermore, profiling R code with C++ is complicated due to different settings between various OSes. While there are some blog posts and presentation materials available on the Internet, many miss important steps that take some effort to determine the correct solution to resolve.</p>
-
 <h2 id="steps-to-profile-c-code-being-called-by-r-code-using-a-gui">Steps to profile C++ code being called by R code using a GUI</h2>
-
 <p>macOS users can use Xcode (freely available) for profiling of R code that calls C++ code. As Xcode has a nice GUI, it may be the preferred tool for many users. The primary profiling tool in Xcode is called <a href="https://help.apple.com/instruments/mac/10.0/#/dev7b09c84f5">Instruments</a>. Instruments can be launched by first opening Xcode, then from the Xcode application menu select Open Developer Tool-&gt;Instruments.</p>
-
 <p>For users on Windows, the GPL licensed <a href="http://www.codersnotes.com/sleepy/">Very Sleepy</a> is an excellent GUI profiler that works almost identically to Xcode Instruments for CPU Profiling.</p>
-
 <p>For simplicity sake, steps below demonstrate using Instruments; for other GUIs, steps are very similar. Here are some basic steps to get it working:</p>
-
 <ol>
 <li>Configure compilation to enable debugging. In GCC and CLANG this can be accomplished by adding ‘-g’ to your compiler flags via Makevars. If you are developing a package, Makevars or Makevars.win should be in the &ldquo;src&rdquo; directory. Otherwise, update/check ~/.R/Makevars (linux and mac) or .R/Makevars.win (windows) file in your home directory. Depending on your other compiler settings you may also want to add -O0, though changing optimization levels may alter any gains achieved through profiling.</li>
 <li>Determine what you want to profile. <em>The code you run needs to last sufficiently long to allow for application switching and to gather sufficient data via profiling.</em></li>
-
-<li><p>Create a script to run the code you are interested in. Here is an example of running PCCC with an input dataset of 500000 rows:</p>
-
-<pre><code class="language-r">library(pccc)
-# replicate sample dataset from pccc package to get larger set
-# so that it will run long enough to profile. adjust as needed...
-mydata &lt;- pccc::pccc_icd10_dataset
-large_dataset &lt;- mydata[rep(seq_len(nrow(mydata)), 500), ]
-# function that does work to be profiled
-ccc(large_dataset[, c(1:21)], # get id, dx, and pc columns
-    id      = id,
-    dx_cols = dplyr::starts_with(&quot;dx&quot;),
-    pc_cols = dplyr::starts_with(&quot;pc&quot;),
-    icdv    = 10)
-</code></pre></li>
-
-<li><p>Prep Instruments by selecting ‘Time Profiler’ and then identifying the necessary process. If running script via RStudio, you will need to observe the rsession process. If running via command line R, the process is R. Alternatively run Instruments with “Allocations” to see memory allocations</p></li>
-
-<li><p>Start profiling.</p></li>
-
-<li><p>Start your script in whatever fashion you normally run R scripts.</p></li>
-
-<li><p>After you have gathered sufficient data (perhaps 30 seconds to 1 minute), stop the profiling process.</p></li>
-
-<li><p>Find your custom function calls in the symbol tree. There will likely be many layers before your code is called. The call just before your code will be “do_dotcall” The symbol tree should show your custom function names and how long each took.</p></li>
+<li>Create a script to run the code you are interested in. Here is an example of running PCCC with an input dataset of 500000 rows:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(pccc)
+<span style="color:#75715e"># replicate sample dataset from pccc package to get larger set</span>
+<span style="color:#75715e"># so that it will run long enough to profile. adjust as needed...</span>
+mydata <span style="color:#f92672">&lt;-</span> pccc<span style="color:#f92672">::</span>pccc_icd10_dataset
+large_dataset <span style="color:#f92672">&lt;-</span> mydata<span style="color:#a6e22e">[rep</span>(<span style="color:#a6e22e">seq_len</span>(<span style="color:#a6e22e">nrow</span>(mydata)), <span style="color:#ae81ff">500</span>), ]
+<span style="color:#75715e"># function that does work to be profiled</span>
+<span style="color:#a6e22e">ccc</span>(large_dataset[, <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">21</span>)], <span style="color:#75715e"># get id, dx, and pc columns</span>
+    id      <span style="color:#f92672">=</span> id,
+    dx_cols <span style="color:#f92672">=</span> dplyr<span style="color:#f92672">::</span><span style="color:#a6e22e">starts_with</span>(<span style="color:#e6db74">&#34;dx&#34;</span>),
+    pc_cols <span style="color:#f92672">=</span> dplyr<span style="color:#f92672">::</span><span style="color:#a6e22e">starts_with</span>(<span style="color:#e6db74">&#34;pc&#34;</span>),
+    icdv    <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>)
+</code></pre></div></li>
+<li>Prep Instruments by selecting ‘Time Profiler’ and then identifying the necessary process. If running script via RStudio, you will need to observe the rsession process. If running via command line R, the process is R. Alternatively run Instruments with “Allocations” to see memory allocations</li>
+<li>Start profiling.</li>
+<li>Start your script in whatever fashion you normally run R scripts.</li>
+<li>After you have gathered sufficient data (perhaps 30 seconds to 1 minute), stop the profiling process.</li>
+<li>Find your custom function calls in the symbol tree. There will likely be many layers before your code is called. The call just before your code will be “do_dotcall” The symbol tree should show your custom function names and how long each took.</li>
 </ol>
-
 <p>Xcode Instruments screenshot showing C++ code from <a href="https://cran.r-project.org/package=pccc">PCCC</a> R package</p>
-
-<p><img src="/post/2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus_files/instruments_screenshot.png" alt="Xcode Instruments screenshot showing profiling of R code that calls C/C++" /></p>
-
+<p><img src="/post/2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus_files/instruments_screenshot.png" alt="Xcode Instruments screenshot showing profiling of R code that calls C/C++"></p>
 <h2 id="steps-to-profile-c-code-via-command-line-on-macos-and-linux-using-gperftools">Steps to profile C++ code via command line on macOS and Linux using gperftools</h2>
-
 <p>To profile R code that calls C++ code via command line tools requires calling the correct R binary as well as setting up correct environment variables in a OS specific fashion.</p>
-
 <p>For macOS, I recommend installing gperftools via <a href="https://brew.sh">Homebrew</a> <code>brew install gperftools</code>. For Linux, use your respective package manager (rpm/apt/pacman/etc.):</p>
-
-<pre><code class="language-bash"># Debian derivatives
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Debian derivatives</span>
 sudo apt-get install google-perftools
-# Redhat derivates
+<span style="color:#75715e"># Redhat derivates</span>
 sudo yum install gperftools
-</code></pre>
-
-<ol>
-<li>Follow steps 1 – 3 as shown above.</li>
-
-<li><p>Identify location of R binary. By default ‘R’ is actually a batch shell script that launches the R binary. You cannot get the desired profiling informaiton about your code from profiling a shell script.</p>
-
+</code></pre></div><ol>
+<li>
+<p>Follow steps 1 – 3 as shown above.</p>
+</li>
+<li>
+<p>Identify location of R binary. By default ‘R’ is actually a batch shell script that launches the R binary. You cannot get the desired profiling informaiton about your code from profiling a shell script.</p>
 <ol>
 <li>For macOS, using R installed via Homebrew, the actual R binary is located at <code>/usr/local/Cellar/r/3.5.1/lib/R/bin/exec/R</code></li>
 <li>For Linux users, the R binary is likely located at <code>/usr/lib/R/bin/exec/R</code></li>
-</ol></li>
-
-<li><p>Set (or verify) your R_HOME environment variable.</p>
-
+</ol>
+</li>
+<li>
+<p>Set (or verify) your R_HOME environment variable.</p>
 <ol>
 <li>For macOS, using R installed via Homebrew, the R_HOME is <code>/usr/local/Cellar/r/3.5.1/lib/R</code></li>
 <li>For Linux users, the R binary is likely located at <code>/usr/lib/R/bin/exec/R</code></li>
 </ol>
-
 <p>If your environment variable is not set, set R_HOME via a command like (replace path with your actual R Home location). If you use bash, the command is:</p>
-
-<pre><code class="language-bash">export R_HOME=/usr/lib/R/bin/exec/R
-</code></pre></li>
-
-<li><p>Run your test (<em>in this example it is called profile_sample.R</em>) script with the perftools libraries loaded and an environment variable CPUPROFILE that specifies the location to save the CPU profile output. Replace libprofiler path and file name with your actual filename. Replace R binary with your actual R binary with full path.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export R_HOME<span style="color:#f92672">=</span>/usr/lib/R/bin/exec/R
+</code></pre></div></li>
+<li>
+<p>Run your test (<em>in this example it is called profile_sample.R</em>) script with the perftools libraries loaded and an environment variable CPUPROFILE that specifies the location to save the CPU profile output. Replace libprofiler path and file name with your actual filename. Replace R binary with your actual R binary with full path.</p>
 <ol>
-<li><p>For macOS, this is accomplished via the command <code>DYLD_INSERT_LIBRARIES=/usr/local/lib/libprofiler.dylib CPUPROFILE=sample.profile /usr/local/Cellar/r/3.5.1/lib/R/bin/exec/R -f profile_sample.R</code></p></li>
-
-<li><p>For Linux, this is accomplished via the command <code>LD_PRELOAD=/usr/lib/libprofiler.so CPUPROFILE=sample.profile /usr/lib/R/bin/exec/R -f profile_sample.R</code></p></li>
-</ol></li>
-
-<li><p>View the results via pprof; again, ensure you use your actual R binary path.</p>
-
+<li>
+<p>For macOS, this is accomplished via the command <code>DYLD_INSERT_LIBRARIES=/usr/local/lib/libprofiler.dylib CPUPROFILE=sample.profile /usr/local/Cellar/r/3.5.1/lib/R/bin/exec/R -f profile_sample.R</code></p>
+</li>
+<li>
+<p>For Linux, this is accomplished via the command <code>LD_PRELOAD=/usr/lib/libprofiler.so CPUPROFILE=sample.profile /usr/lib/R/bin/exec/R -f profile_sample.R</code></p>
+</li>
+</ol>
+</li>
+<li>
+<p>View the results via pprof; again, ensure you use your actual R binary path.</p>
 <ol>
 <li>For macOS, this is accomplished via the command <code>pprof --text /usr/local/Cellar/r/3.5.1/lib/R/bin/exec/R sample.profile</code></li>
 <li>For Linux, this is accomplished via (Debian based distributions may call pprof ‘google-pprof’) the command <code>pprof --text /usr/bin/R ./sample.profile</code></li>
 </ol>
-
 <p>Output will be something similar to the following:</p>
-
 <pre><code>Using local file /usr/bin/R.
 Using local file ./sample.profile.
 Total: 7399 samples
@@ -231,9 +211,7 @@ Total: 7399 samples
       30   0.4%  95.2%      452   6.1% Rf_allocVector3
 </code></pre></li>
 </ol>
-
 <p><em>Updated Oct 6, 2018 based on feedback from Matthew Krump</em></p>
-
 <ul>
 <li>Changed code example to be more easily reproduced</li>
 <li>More details on Makevars</li>
@@ -262,7 +240,7 @@ Total: 7399 samples
 
     <div class="share">
         
-            <a class="icon-twitter" href="https://twitter.com/share?text=How%20to%20profile%20your%20R%20code%20that%20calls%20C%2fC%2b%2b%20&url=%2f2018%2f10%2f05%2f2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus%2f"
+            <a class="icon-twitter" href="https://twitter.com/share?text=How%20to%20profile%20your%20R%20code%20that%20calls%20C%2fC%2b%2b%20&url=https%3a%2f%2fmagic-lantern.github.io%2f2018%2f10%2f05%2f2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus%2f"
                 onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fa fa-twitter"></i>
                 <span class="hidden">Twitter</span>
@@ -270,7 +248,7 @@ Total: 7399 samples
         
 
         
-            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2f2018%2f10%2f05%2f2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus%2f"
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmagic-lantern.github.io%2f2018%2f10%2f05%2f2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus%2f"
                 onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                 <i class="fa fa-facebook"></i>
                 <span class="hidden">Facebook</span>
@@ -278,14 +256,14 @@ Total: 7399 samples
         
 
         
-            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2f2018%2f10%2f05%2f2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus%2f"
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2fmagic-lantern.github.io%2f2018%2f10%2f05%2f2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus%2f"
               onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
               <i class="fa fa-google-plus"></i>
                 <span class="hidden">Google+</span>
             </a>
         
         
-            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=How%20to%20profile%20your%20R%20code%20that%20calls%20C%2fC%2b%2b%20&url=%2f2018%2f10%2f05%2f2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus%2f&summary=When%20profiling%20R%20code%2c%20the%20details%20and%20performance%20of%20any%20C%2fC%2b%2b%20code%20is%20hidden%20behind%20.Call%28%29.%20This%20post%20describes%20how%20to%20get%20details%20on%20what%20the%20C%2fC%2b%2b%20code%20is%20doing."
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=How%20to%20profile%20your%20R%20code%20that%20calls%20C%2fC%2b%2b%20&url=https%3a%2f%2fmagic-lantern.github.io%2f2018%2f10%2f05%2f2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus%2f&summary=When%20profiling%20R%20code%2c%20the%20details%20and%20performance%20of%20any%20C%2fC%2b%2b%20code%20is%20hidden%20behind%20.Call%28%29.%20This%20post%20describes%20how%20to%20get%20details%20on%20what%20the%20C%2fC%2b%2b%20code%20is%20doing."
                onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
                <i class="fa fa-linkedin"></i>
                <span class="hidden">LinkedIn</span>
@@ -305,7 +283,7 @@ Total: 7399 samples
             <div class="container">
                 <div class="site-title-wrapper">
                     <h1 class="site-title">
-                        <a title="Seth Russell" href="/">Seth Russell</a>
+                        <a title="Seth Russell" href="https://magic-lantern.github.io">Seth Russell</a>
                     </h1>
                     <a class="button-square button-jump-top js-jump-top" href="#">
                         <i class="fa fa-angle-up"></i>
@@ -313,7 +291,7 @@ Total: 7399 samples
                 </div>
 
                 <p class="footer-copyright">
-                    <span>&copy; 2018 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                    <span>&copy; 2020 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
                 </p>
                 <p class="footer-copyright">
                     <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
@@ -322,14 +300,9 @@ Total: 7399 samples
             </div>
         </footer>
 
-        <script src="/js/jquery-1.11.3.min.js"></script>
-        <script src="/js/jquery.fitvids.js"></script>
-        
-        
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        
-        
-        <script src="/js/scripts.js"></script>
+        <script src="https://magic-lantern.github.iojs/jquery-1.11.3.min.js"></script>
+        <script src="https://magic-lantern.github.iojs/jquery.fitvids.js"></script>
+        <script src="https://magic-lantern.github.iojs/scripts.js"></script>
     </body>
 </html>
 

@@ -1,136 +1,155 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/page/cv/</loc>
+    <loc>https://magic-lantern.github.io/tags/ehr/</loc>
+    <lastmod>2020-04-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/tags/epic/</loc>
+    <lastmod>2020-04-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/tags/phi/</loc>
+    <lastmod>2020-04-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/project/prediction-analysis/</loc>
+    <lastmod>2020-04-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/tags/project/</loc>
+    <lastmod>2020-04-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/project/</loc>
+    <lastmod>2020-04-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/tags/python/</loc>
+    <lastmod>2020-04-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/</loc>
+    <lastmod>2020-04-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/tags/</loc>
+    <lastmod>2020-04-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/tags/performance/</loc>
+    <lastmod>2020-02-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/tags/r/</loc>
+    <lastmod>2020-02-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/tags/software-engineering/</loc>
+    <lastmod>2020-02-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/project/software-principles/</loc>
+    <lastmod>2020-02-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/tags/testing/</loc>
+    <lastmod>2020-02-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/tags/blog/</loc>
     <lastmod>2018-10-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/10/15/2018-10-15-using-google-compute-engine-as-host-for-rstudio-server/</loc>
+    <loc>https://magic-lantern.github.io/tags/google-cloud/</loc>
     <lastmod>2018-10-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/10/05/2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus/</loc>
+    <loc>https://magic-lantern.github.io/page/</loc>
+    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/post/</loc>
+    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/page/cv/</loc>
+    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/2018/10/15/2018-10-15-using-google-compute-engine-as-host-for-rstudio-server/</loc>
+    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/2018/10/05/2018-10-05-how-to-profile-your-r-code-that-calls-c-c-plus-plus/</loc>
     <lastmod>2018-10-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/page/about/</loc>
+    <loc>https://magic-lantern.github.io/tags/optimization/</loc>
+    <lastmod>2018-10-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/tags/profiling/</loc>
+    <lastmod>2018-10-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/page/about/</loc>
     <lastmod>2018-10-04T02:13:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/kung-faux-pandas/</loc>
+    <loc>https://magic-lantern.github.io/project/kung-faux-pandas/</loc>
     <lastmod>2018-10-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2018/09/27/2018-09-27-example-of-python-data-analysis/</loc>
+    <loc>https://magic-lantern.github.io/tags/synthetic-data/</loc>
+    <lastmod>2018-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://magic-lantern.github.io/tags/bigquery/</loc>
     <lastmod>2018-09-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/project/pediatric-complex-chronic-conditions/</loc>
+    <loc>https://magic-lantern.github.io/tags/data-analysis/</loc>
     <lastmod>2018-09-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/bigquery/</loc>
+    <loc>https://magic-lantern.github.io/2018/09/27/2018-09-27-example-of-python-data-analysis/</loc>
     <lastmod>2018-09-27T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/blog/</loc>
-    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/data-analysis/</loc>
+    <loc>https://magic-lantern.github.io/project/pediatric-complex-chronic-conditions/</loc>
     <lastmod>2018-09-27T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/google-cloud/</loc>
-    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/optimization/</loc>
-    <lastmod>2018-10-05T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/page/</loc>
-    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/phi/</loc>
-    <lastmod>2018-10-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/profiling/</loc>
-    <lastmod>2018-10-05T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/project/</loc>
-    <lastmod>2018-10-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/project/</loc>
-    <lastmod>2018-10-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/python/</loc>
-    <lastmod>2018-10-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/r/</loc>
-    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2018-10-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/synthetic-data/</loc>
-    <lastmod>2018-10-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2018-09-27T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
 </urlset>

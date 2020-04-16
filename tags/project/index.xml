@@ -1,68 +1,64 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Project on Seth Russell</title>
-    <link>/tags/project/</link>
-    <description>Recent content in Project on Seth Russell</description>
+    <title>project on Seth Russell</title>
+    <link>https://magic-lantern.github.io/tags/project/</link>
+    <description>Recent content in project on Seth Russell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 04 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2020 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/tags/project/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://magic-lantern.github.io/tags/project/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Prediction Evaluation</title>
+      <link>https://magic-lantern.github.io/project/prediction-analysis/</link>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://magic-lantern.github.io/project/prediction-analysis/</guid>
+      <description>&lt;p&gt;The D2V Analytics core was asked by the UCHealth system to evaluate the predictive performance of a proprietary sepsis prediction model developed the Epic Corporation. This project, led by Dr. Bennett, culminated in a report and presentation to the senior leadership of the adult health care system. My role on the project was that of data scientist. A podium abstract was presented at the 2018 AMIA 2018 symposium. The analysis has also been accepted for presentation in abstract form at the Epic Expert User Group Meetings (XGM) in May 2019. A manuscript is currently under review at a peer-reviewed journal.&lt;/p&gt;
+&lt;p&gt;Bennett T, Russell S, King J, Schilling L, Voong C, Rogers N, et al. Accuracy of the Epic Sepsis Prediction Model in a Regional Health System. arXiv:190207276 [cs, stat]. 2019 Feb 19; Available from: &lt;a href=&#34;http://arxiv.org/abs/1902.07276&#34;&gt;http://arxiv.org/abs/1902.07276&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Kung Faux Pandas</title>
-      <link>/project/kung-faux-pandas/</link>
+      <link>https://magic-lantern.github.io/project/kung-faux-pandas/</link>
       <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/project/kung-faux-pandas/</guid>
+      <guid>https://magic-lantern.github.io/project/kung-faux-pandas/</guid>
       <description>&lt;p&gt;There are many barriers to data access and data sharing, especially in the domain of machine learning on health care data. Legal constraints such as HIPAA protect patient privacy but slow access to data and limit reproducibility. Kung Faux Pandas is an end-to-end system called Kung Faux Pandas for easily generating de-identified or synthetic data which is statistically similar to given real data but lacks sensitive information. This system focuses on data synthesis and de-identification narrowed to a specific research question to allow for self-service data access without the complexities required to generate an entire population of data that is not needed for a given research project. Kung Faux Pandas is an open source publicly available system that lowers barriers to HIPAA- and GDPR-compliant data sharing for enabling reproducibility and other purposes.&lt;/p&gt;
-
 &lt;p&gt;This data synthesis process was created using Python. In order to make it easier for others to replicate the environment, a range of environments are supported: Conda environment export, virtualenv requirements file, and a docker image with the latest code.&lt;/p&gt;
-
 &lt;p&gt;For source code see:&lt;/p&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://github.com/CUD2V/kungfauxpandas&#34;&gt;https://github.com/CUD2V/kungfauxpandas&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>R Package for Pediatric Complex Chronic Condition Classification</title>
-      <link>/project/pediatric-complex-chronic-conditions/</link>
+      <link>https://magic-lantern.github.io/project/pediatric-complex-chronic-conditions/</link>
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/project/pediatric-complex-chronic-conditions/</guid>
-      <description>
-
-&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
-
+      <guid>https://magic-lantern.github.io/project/pediatric-complex-chronic-conditions/</guid>
+      <description>&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
 &lt;p&gt;Version 2 of the Pediatric Complex Chronic Conditions (CCC) system was published
 &lt;a href=&#34;http://bmcpediatr.biomedcentral.com/articles/10.1186/1471-2431-14-199&#34;&gt;&amp;ldquo;Pediatric complex chronic conditions classification system version
 2: updated for ICD-10 and complex medical technology dependence and
 transplantation&amp;rdquo; by Chris Feudtner, James A Feinstein, Wenjun Zhong, Matt Hall
 and Dingwei Dai&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;SAS and STATA scripts to generate CCC categories from ICD codes were provided by Feudtner et al.
 as an appendix to the above manuscript. However, those scripts can take many hours to run
 on large datasets.&lt;/p&gt;
-
 &lt;p&gt;This package provides R functions to generate the CCC categories. Because the R functions
 are built with a C++ back-end, they are very computationally efficient.&lt;/p&gt;
-
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
-
 &lt;h3 id=&#34;from-cran&#34;&gt;From CRAN&lt;/h3&gt;
-
 &lt;p&gt;Version 1.0.2 is available on The Comprehensive R Archive Network at &lt;a href=&#34;https://CRAN.R-project.org/package=pccc&#34;&gt;https://CRAN.R-project.org/package=pccc&lt;/a&gt;.&lt;/p&gt;
-
 &lt;h3 id=&#34;developmental-version&#34;&gt;Developmental version&lt;/h3&gt;
-
 &lt;p&gt;You can install the
 developmental version of &lt;code&gt;pccc&lt;/code&gt; directly from github using the
 &lt;a href=&#34;https://github.com/hadley/devtools/&#34;&gt;&lt;code&gt;devtools&lt;/code&gt;&lt;/a&gt; package:&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;if (!(&amp;quot;devtools&amp;quot; %in% rownames(installed.packages()))) { 
   warning(&amp;quot;installing devtools from https://cran.rstudio.com&amp;quot;)
   install.packages(&amp;quot;devtools&amp;quot;, repo = &amp;quot;https://cran.rstudio.com&amp;quot;)
@@ -70,25 +66,17 @@ developmental version of &lt;code&gt;pccc&lt;/code&gt; directly from github usin
 
 devtools::install_github(&amp;quot;CUD2V/pccc&amp;quot;, build_vignettes = TRUE)
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;&lt;em&gt;NOTE:&lt;/em&gt; If you are working on a Windows machine you will need to download and
 install &lt;a href=&#34;https://cran.r-project.org/bin/windows/Rtools/&#34;&gt;&lt;code&gt;Rtools&lt;/code&gt;&lt;/a&gt; before
 &lt;code&gt;devtools&lt;/code&gt; will work for you.&lt;/p&gt;
-
 &lt;p&gt;If you are on a Linux machine or have GNU &lt;code&gt;make&lt;/code&gt; configured you should be able
 to build and install this package by cloning the repository and running&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;make install
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;h2 id=&#34;more-project-information&#34;&gt;More project information&lt;/h2&gt;
-
 &lt;p&gt;We&amp;rsquo;ve published a research letter in JAMA Pediatrics on this R package:&lt;/p&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://jamanetwork.com/journals/jamapediatrics/fullarticle/2677901&#34;&gt;https://jamanetwork.com/journals/jamapediatrics/fullarticle/2677901&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;For source code see:&lt;/p&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://github.com/CUD2V/pccc&#34;&gt;https://github.com/CUD2V/pccc&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>

@@ -1,425 +1,374 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on Seth Russell</title>
-    <link>/tags/python/</link>
-    <description>Recent content in Python on Seth Russell</description>
+    <title>python on Seth Russell</title>
+    <link>https://magic-lantern.github.io/tags/python/</link>
+    <description>Recent content in python on Seth Russell</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 04 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2020 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://magic-lantern.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Prediction Evaluation</title>
+      <link>https://magic-lantern.github.io/project/prediction-analysis/</link>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://magic-lantern.github.io/project/prediction-analysis/</guid>
+      <description>&lt;p&gt;The D2V Analytics core was asked by the UCHealth system to evaluate the predictive performance of a proprietary sepsis prediction model developed the Epic Corporation. This project, led by Dr. Bennett, culminated in a report and presentation to the senior leadership of the adult health care system. My role on the project was that of data scientist. A podium abstract was presented at the 2018 AMIA 2018 symposium. The analysis has also been accepted for presentation in abstract form at the Epic Expert User Group Meetings (XGM) in May 2019. A manuscript is currently under review at a peer-reviewed journal.&lt;/p&gt;
+&lt;p&gt;Bennett T, Russell S, King J, Schilling L, Voong C, Rogers N, et al. Accuracy of the Epic Sepsis Prediction Model in a Regional Health System. arXiv:190207276 [cs, stat]. 2019 Feb 19; Available from: &lt;a href=&#34;http://arxiv.org/abs/1902.07276&#34;&gt;http://arxiv.org/abs/1902.07276&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Kung Faux Pandas</title>
-      <link>/project/kung-faux-pandas/</link>
+      <link>https://magic-lantern.github.io/project/kung-faux-pandas/</link>
       <pubDate>Thu, 04 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/project/kung-faux-pandas/</guid>
+      <guid>https://magic-lantern.github.io/project/kung-faux-pandas/</guid>
       <description>&lt;p&gt;There are many barriers to data access and data sharing, especially in the domain of machine learning on health care data. Legal constraints such as HIPAA protect patient privacy but slow access to data and limit reproducibility. Kung Faux Pandas is an end-to-end system called Kung Faux Pandas for easily generating de-identified or synthetic data which is statistically similar to given real data but lacks sensitive information. This system focuses on data synthesis and de-identification narrowed to a specific research question to allow for self-service data access without the complexities required to generate an entire population of data that is not needed for a given research project. Kung Faux Pandas is an open source publicly available system that lowers barriers to HIPAA- and GDPR-compliant data sharing for enabling reproducibility and other purposes.&lt;/p&gt;
-
 &lt;p&gt;This data synthesis process was created using Python. In order to make it easier for others to replicate the environment, a range of environments are supported: Conda environment export, virtualenv requirements file, and a docker image with the latest code.&lt;/p&gt;
-
 &lt;p&gt;For source code see:&lt;/p&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://github.com/CUD2V/kungfauxpandas&#34;&gt;https://github.com/CUD2V/kungfauxpandas&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Example of Python data analysis</title>
-      <link>/2018/09/27/2018-09-27-example-of-python-data-analysis/</link>
+      <link>https://magic-lantern.github.io/2018/09/27/2018-09-27-example-of-python-data-analysis/</link>
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/09/27/2018-09-27-example-of-python-data-analysis/</guid>
-      <description>
-
-&lt;p&gt;&lt;em&gt;Work in Progress&amp;hellip;&lt;/em&gt;&lt;/p&gt;
-
+      <guid>https://magic-lantern.github.io/2018/09/27/2018-09-27-example-of-python-data-analysis/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Work in Progress&amp;hellip;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;This Analytics example is meant to demonstrate a few of the things you can do to analyze data stored in Google BigQuery using Python. Originally developed some time ago, I thought I&amp;rsquo;d clean it up and post it here.&lt;/p&gt;
-
 &lt;p&gt;For those that aren&amp;rsquo;t familiar with BigQuery, it is a &amp;lsquo;serverless&amp;rsquo; database system that is fully managed and always available. Instead of charging per environment/instance/hour of time like many cloud database systems, Google charges based on the amount of data a query processes. For those familiar with Amazon Web Services, BigQuery is more like DynamoDB rather than an Aurora/Redshift/etc instances where you pay per hour.&lt;/p&gt;
-
 &lt;p&gt;For more details on this example, setup, etc. please see the project wiki: &lt;a href=&#34;https://github.com/CUD2V/analytics_examples/wiki&#34;&gt;https://github.com/CUD2V/analytics_examples/wiki&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For some additional examples showing more of the capabilities of Google BigQuery or Google Cloud Storage see:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/magic-lantern/904e22ca625404da489dab4f2706fdc7&#34;&gt;Google Cloud BigQuery Example&lt;/a&gt; - Some alternative methods of getting data from Google BigQuery.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/magic-lantern/c11500847f06a6e63bae4ca010595773&#34;&gt;Google Cloud Storage Example&lt;/a&gt; - Most analysis that a person would want to do will likely include accessing external data or storing results of some process for further downstream analysis. Google Cloud Storage is one option for that phase of an anlysis pipeline.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; pandas
 
-&lt;p&gt;For some additional examples showing more of the capabilities of Google BigQuery or Google Cloud Storage see:
-* &lt;a href=&#34;https://gist.github.com/magic-lantern/904e22ca625404da489dab4f2706fdc7&#34;&gt;Google Cloud BigQuery Example&lt;/a&gt; - Some alternative methods of getting data from Google BigQuery.
-* &lt;a href=&#34;https://gist.github.com/magic-lantern/c11500847f06a6e63bae4ca010595773&#34;&gt;Google Cloud Storage Example&lt;/a&gt; - Most analysis that a person would want to do will likely include accessing external data or storing results of some process for further downstream analysis. Google Cloud Storage is one option for that phase of an anlysis pipeline.&lt;/p&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; IPython.core.display &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; display, HTML
+display(HTML(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;lt;style&amp;gt;.container { width:95% !important; }&amp;lt;/style&amp;gt;&amp;#34;&lt;/span&gt;))
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import pandas
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; psycopg2 &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; pg
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; pandas.io.sql &lt;span style=&#34;color:#f92672&#34;&gt;as&lt;/span&gt; psql
 
-from IPython.core.display import display, HTML
-display(HTML(&amp;quot;&amp;lt;style&amp;gt;.container { width:95% !important; }&amp;lt;/style&amp;gt;&amp;quot;))
-
-import psycopg2 as pg
-import pandas.io.sql as psql
-
-from bokeh.io import output_notebook, show
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; bokeh.io &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; output_notebook, show
 output_notebook()
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# this is to hide useless errors if using OAuth with BigQuery&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; logging
+logging&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;getLogger(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;googleapiclient.discovery_cache&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;setLevel(logging&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CRITICAL)
+&lt;span style=&#34;color:#75715e&#34;&gt;# don&amp;#39;t want to be messaged about future warnings as I&amp;#39;m not explicitly calling code that is being warned about&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; warnings
+warnings&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;simplefilter(action&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ignore&amp;#39;&lt;/span&gt;, category&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;FutureWarning&lt;/span&gt;)
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# this is to hide useless errors if using OAuth with BigQuery
-import logging
-logging.getLogger(&#39;googleapiclient.discovery_cache&#39;).setLevel(logging.CRITICAL)
-# don&#39;t want to be messaged about future warnings as I&#39;m not explicitly calling code that is being warned about
-import warnings
-warnings.simplefilter(action=&#39;ignore&#39;, category=FutureWarning)
+&lt;span style=&#34;color:#75715e&#34;&gt;# set this to either postgres or bigquery ####&lt;/span&gt;
+datasource &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bigquery&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;##############################################&lt;/span&gt;
 
-# set this to either postgres or bigquery ####
-datasource = &#39;bigquery&#39;
-##############################################
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; datasource &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;postgres&amp;#39;&lt;/span&gt;:
+    &lt;span style=&#34;color:#75715e&#34;&gt;# get connected to the database&lt;/span&gt;
+    connection &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;connect(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;host=localhost dbname=ohdsi user=ohdsi password=ohdsi&amp;#34;&lt;/span&gt;)
 
-if datasource == &#39;postgres&#39;:
-    # get connected to the database
-    connection = pg.connect(&amp;quot;host=localhost dbname=ohdsi user=ohdsi password=ohdsi&amp;quot;)
+    &lt;span style=&#34;color:#75715e&#34;&gt;# print the connection string we will use to connect&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Connecting to database: &amp;#34;&lt;/span&gt;, connection)
 
-    # print the connection string we will use to connect
-    print(&amp;quot;Connecting to database: &amp;quot;, connection)
-
-    # conn.cursor will return a cursor object, you can use this cursor to perform queries
-    cursor = connection.cursor()
-    print(&amp;quot;Connected to Postgres database!\n&amp;quot;)
-elif datasource == &#39;bigquery&#39;:
-    connection = {
-        &#39;project_id&#39; : &#39;synpuf-omop-project&#39;,
-        &#39;dialect&#39;    : &#39;standard&#39;
+    &lt;span style=&#34;color:#75715e&#34;&gt;# conn.cursor will return a cursor object, you can use this cursor to perform queries&lt;/span&gt;
+    cursor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; connection&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;cursor()
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Connected to Postgres database!&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; datasource &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bigquery&amp;#39;&lt;/span&gt;:
+    connection &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;project_id&amp;#39;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;synpuf-omop-project&amp;#39;&lt;/span&gt;,
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;dialect&amp;#39;&lt;/span&gt;    : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;standard&amp;#39;&lt;/span&gt;
     }
-    print(&amp;quot;Setup Google BigQuery connection&amp;quot;)
-else:
-    connection = None
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Setup Google BigQuery connection&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+    connection &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; None
 
-def read_data(sql):
-    if datasource == &#39;postgres&#39;:
-        return pandas.read_sql(sql, connection)
-    elif datasource == &#39;bigquery&#39;:
-        return pandas.read_gbq(sql, **connection)
-    else:
-        return pandas.DataFrame()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;exploration-and-visualization&#34;&gt;Exploration and Visualization&lt;/h2&gt;
-
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;read_data&lt;/span&gt;(sql):
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; datasource &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;postgres&amp;#39;&lt;/span&gt;:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; pandas&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read_sql(sql, connection)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;elif&lt;/span&gt; datasource &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bigquery&amp;#39;&lt;/span&gt;:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; pandas&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read_gbq(sql, &lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;connection)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; pandas&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;DataFrame()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;exploration-and-visualization&#34;&gt;Exploration and Visualization&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;These next cells are charts looking at births by year - of the population still active in medicare today.&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; bokeh.charts &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Bar
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; bokeh.io &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; output_notebook, show
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; bokeh.charts &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; defaults
+defaults&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;width &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;900&lt;/span&gt;
+defaults&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;height &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;700&lt;/span&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from bokeh.charts import Bar
-from bokeh.io import output_notebook, show
-from bokeh.charts import defaults
-defaults.width = 900
-defaults.height = 700
+age_df &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; read_data(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;select
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    count(year_of_birth) count,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    year_of_birth,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    c1.concept_name gender
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;from synpuf_omop.person p
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;left join synpuf_omop.concept c1 on p.gender_concept_id = c1.concept_id
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;group by gender, year_of_birth
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;order by year_of_birth, gender
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;)
 
-age_df = read_data(&#39;&#39;&#39;
-select
-    count(year_of_birth) count,
-    year_of_birth,
-    c1.concept_name gender
-from synpuf_omop.person p
-left join synpuf_omop.concept c1 on p.gender_concept_id = c1.concept_id
-group by gender, year_of_birth
-order by year_of_birth, gender
-&#39;&#39;&#39;)
-
-p = Bar(age_df,             # source of data
-        &#39;year_of_birth&#39;,    # columns from dataframe to use
-        #label=&#39;origin&#39;, 
-        agg=&#39;sum&#39;,
-        values=&#39;count&#39;,
-        stack=&#39;gender&#39;,
-        title=&amp;quot;Births by year, stacked by gender&amp;quot;,
-        legend=&#39;top_right&#39;)
+p &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Bar(age_df,             &lt;span style=&#34;color:#75715e&#34;&gt;# source of data&lt;/span&gt;
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;year_of_birth&amp;#39;&lt;/span&gt;,    &lt;span style=&#34;color:#75715e&#34;&gt;# columns from dataframe to use&lt;/span&gt;
+        &lt;span style=&#34;color:#75715e&#34;&gt;#label=&amp;#39;origin&amp;#39;, &lt;/span&gt;
+        agg&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sum&amp;#39;&lt;/span&gt;,
+        values&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;count&amp;#39;&lt;/span&gt;,
+        stack&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;gender&amp;#39;&lt;/span&gt;,
+        title&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Births by year, stacked by gender&amp;#34;&lt;/span&gt;,
+        legend&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;top_right&amp;#39;&lt;/span&gt;)
 show(p)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; bokeh.charts &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Bar
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; bokeh.io &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; output_notebook, show
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; bokeh.charts &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; defaults
+defaults&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;width &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;900&lt;/span&gt;
+defaults&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;height &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;700&lt;/span&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from bokeh.charts import Bar
-from bokeh.io import output_notebook, show
-from bokeh.charts import defaults
-defaults.width = 900
-defaults.height = 700
+pct_df &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; read_data(
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;select
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    year_of_birth,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    count(case when c1.concept_name = &amp;#39;FEMALE&amp;#39; then 1 end) gender_count,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    &amp;#39;FEMALE&amp;#39; gender,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    count(1) total_births
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;from synpuf_omop.person p
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;left join synpuf_omop.concept c1 on p.gender_concept_id = c1.concept_id
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;group by year_of_birth
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;union all
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;select
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    year_of_birth,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    count(case when c1.concept_name = &amp;#39;MALE&amp;#39; then 1 end) gender_count,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    &amp;#39;MALE&amp;#39; gender,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    count(1) total_births
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;from synpuf_omop.person p
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;left join synpuf_omop.concept c1 on p.gender_concept_id = c1.concept_id
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;group by year_of_birth
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;order by year_of_birth, gender asc
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;)
 
-pct_df = read_data(
-&#39;&#39;&#39;
-select
-    year_of_birth,
-    count(case when c1.concept_name = &#39;FEMALE&#39; then 1 end) gender_count,
-    &#39;FEMALE&#39; gender,
-    count(1) total_births
-from synpuf_omop.person p
-left join synpuf_omop.concept c1 on p.gender_concept_id = c1.concept_id
-group by year_of_birth
-union all
-select
-    year_of_birth,
-    count(case when c1.concept_name = &#39;MALE&#39; then 1 end) gender_count,
-    &#39;MALE&#39; gender,
-    count(1) total_births
-from synpuf_omop.person p
-left join synpuf_omop.concept c1 on p.gender_concept_id = c1.concept_id
-group by year_of_birth
-order by year_of_birth, gender asc
-&#39;&#39;&#39;)
-
-def f(i):
-    return float(i[&#39;gender_count&#39;]) / float(i[&#39;total_births&#39;])
-pct_df[&#39;pct&#39;] = pct_df.apply(f, axis=1)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;f&lt;/span&gt;(i):
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; float(i[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;gender_count&amp;#39;&lt;/span&gt;]) &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; float(i[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;total_births&amp;#39;&lt;/span&gt;])
+pct_df[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;pct&amp;#39;&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pct_df&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;apply(f, axis&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
 
 
-p = Bar(pct_df,             # source of data
-        values=&#39;pct&#39;,          # y axis
-        label=&#39;year_of_birth&#39;, # x axis 
-        agg=&#39;sum&#39;,
-        stack=&#39;gender&#39;,
-        title=&amp;quot;Percentage of births by year, stacked by gender&amp;quot;,
-        legend=&#39;top_right&#39;)
+p &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Bar(pct_df,             &lt;span style=&#34;color:#75715e&#34;&gt;# source of data&lt;/span&gt;
+        values&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;pct&amp;#39;&lt;/span&gt;,          &lt;span style=&#34;color:#75715e&#34;&gt;# y axis&lt;/span&gt;
+        label&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;year_of_birth&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;# x axis &lt;/span&gt;
+        agg&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sum&amp;#39;&lt;/span&gt;,
+        stack&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;gender&amp;#39;&lt;/span&gt;,
+        title&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Percentage of births by year, stacked by gender&amp;#34;&lt;/span&gt;,
+        legend&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;top_right&amp;#39;&lt;/span&gt;)
 show(p)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;These next few cells look at drug duration (how long a perscription is to last)&lt;/em&gt;&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;These next few cells look at drug duration (how long a perscription is to last)&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Due to differences in SQL dialects, this is the PostgreSQL version - inline below is the Google BigQuery version. Might be possible to make one statement work for both&amp;hellip;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
-    --person_id,
-    --drug_concept_id,
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;--person_id,
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;--drug_concept_id,
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    c1.concept_name drug_name,
+    &lt;span style=&#34;color:#75715e&#34;&gt;--drug_era_start_date,
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;--drug_era_end_date,
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    drug_era_end_date &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; drug_era_start_date duration
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; synpuf_omop.drug_era d
+&lt;span style=&#34;color:#66d9ef&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; synpuf_omop.concept c1 &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; d.drug_concept_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; c1.concept_id
+&lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; c1.concept_name &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; (
+&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; drug_name &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; (
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt;
     c1.concept_name drug_name,
-    --drug_era_start_date,
-    --drug_era_end_date,
-    drug_era_end_date - drug_era_start_date duration
-from synpuf_omop.drug_era d
-left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
-where c1.concept_name in (
-select drug_name from (
-    select
-    c1.concept_name drug_name,
-    count(1) count
-    from synpuf_omop.drug_era d
-    left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
-    group by drug_name
-    order by count desc
-    limit 25
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;count&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;count&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; synpuf_omop.drug_era d
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; synpuf_omop.concept c1 &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; d.drug_concept_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; c1.concept_id
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;group&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; drug_name
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;count&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;desc&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;limit&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;25&lt;/span&gt;
    ) x
 )
-order by drug_name
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; drug_name
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# perhaps modify this query to look at drugs with most variation in duration?&lt;/span&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# perhaps modify this query to look at drugs with most variation in duration?
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; bokeh.charts &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; BoxPlot, output_file, show
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; bokeh.sampledata.autompg &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; autompg &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; df
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; bokeh.charts &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; defaults
+defaults&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;width &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;900&lt;/span&gt;
+defaults&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;height &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;900&lt;/span&gt;
 
-from bokeh.charts import BoxPlot, output_file, show
-from bokeh.sampledata.autompg import autompg as df
-from bokeh.charts import defaults
-defaults.width = 900
-defaults.height = 900
+dd_df &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; read_data(
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;select
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    --person_id,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    --drug_concept_id,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    c1.concept_name drug_name,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    --drug_era_start_date,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    --drug_era_end_date,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    date_diff(cast(drug_era_end_date as date), cast(drug_era_start_date as date), day) as duration
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;from synpuf_omop.drug_era d
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;where c1.concept_name in (
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;select drug_name from (
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    select
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    c1.concept_name drug_name,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    count(1) count
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    from synpuf_omop.drug_era d
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    group by drug_name
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    order by count desc
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    limit 25
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;   ) x
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;)
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;order by drug_name
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;)
 
-dd_df = read_data(
-&#39;&#39;&#39;
-select
-    --person_id,
-    --drug_concept_id,
-    c1.concept_name drug_name,
-    --drug_era_start_date,
-    --drug_era_end_date,
-    date_diff(cast(drug_era_end_date as date), cast(drug_era_start_date as date), day) as duration
-from synpuf_omop.drug_era d
-left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
-where c1.concept_name in (
-select drug_name from (
-    select
-    c1.concept_name drug_name,
-    count(1) count
-    from synpuf_omop.drug_era d
-    left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
-    group by drug_name
-    order by count desc
-    limit 25
-   ) x
-)
-order by drug_name
-&#39;&#39;&#39;)
-
-p = BoxPlot(dd_df,
-            values=&#39;duration&#39;,      # y axis
-            label=&#39;drug_name&#39;,      # x axis
-            title=&amp;quot;Drug Duration Box Plot&amp;quot;,
-            legend=False,
+p &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; BoxPlot(dd_df,
+            values&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;duration&amp;#39;&lt;/span&gt;,      &lt;span style=&#34;color:#75715e&#34;&gt;# y axis&lt;/span&gt;
+            label&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;drug_name&amp;#39;&lt;/span&gt;,      &lt;span style=&#34;color:#75715e&#34;&gt;# x axis&lt;/span&gt;
+            title&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Drug Duration Box Plot&amp;#34;&lt;/span&gt;,
+            legend&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;False,
            )
-p.xaxis.axis_label = &amp;quot;Drug&amp;quot;
-p.yaxis.axis_label = &amp;quot;Duration (days)&amp;quot;
+p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;xaxis&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;axis_label &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Drug&amp;#34;&lt;/span&gt;
+p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;yaxis&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;axis_label &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Duration (days)&amp;#34;&lt;/span&gt;
 
 
 show(p)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;Alternatively, you can just get all the data via more simple SQL SELECT statment and do the data processing via Pandas&lt;/em&gt;&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;Alternatively, you can just get all the data via more simple SQL SELECT statment and do the data processing via Pandas&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Again as with the previous query, due to SQL dialect differences, this is the PostgreSQL version - in cell below is the BigQuery version:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt;
     c1.concept_name drug_name,
-    drug_era_end_date - drug_era_start_date duration
-from synpuf_omop.drug_era d
-left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
-order by drug_name
-&lt;/code&gt;&lt;/pre&gt;
+    drug_era_end_date &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; drug_era_start_date duration
+&lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; synpuf_omop.drug_era d
+&lt;span style=&#34;color:#66d9ef&#34;&gt;left&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;join&lt;/span&gt; synpuf_omop.concept c1 &lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt; d.drug_concept_id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; c1.concept_id
+&lt;span style=&#34;color:#66d9ef&#34;&gt;order&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;by&lt;/span&gt; drug_name
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;size_df &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; None
+drug_df &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; None
+top_25 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; None
+top_drugs &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; None
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;size_df = None
-drug_df = None
-top_25 = None
-top_drugs = None
+drug_df &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; read_data(
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;select
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    c1.concept_name drug_name,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    date_diff(cast(drug_era_end_date as date), cast(drug_era_start_date as date), day) as duration
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;from synpuf_omop.drug_era d
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;order by drug_name
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;)
 
-drug_df = read_data(
-&#39;&#39;&#39;
-select
-    c1.concept_name drug_name,
-    date_diff(cast(drug_era_end_date as date), cast(drug_era_start_date as date), day) as duration
-from synpuf_omop.drug_era d
-left join synpuf_omop.concept c1 on d.drug_concept_id = c1.concept_id
-order by drug_name
-&#39;&#39;&#39;)
-
-# if we only want to look at 25 most common drugs
-# count rows grouping by drug_name
-size_df = drug_df.groupby(&amp;quot;drug_name&amp;quot;).size()
-# sort the counted result and only return top 25
-top_25 = size_df.sort_values(ascending = False).head(25)
-# for verification purposes show all rows from original dataset matching most common drug
-#drug_df[drug_df.drug_name.str.contains(top_25.index[0]) == True]
-# only keep rows that match the top_25 pandas series (single column of a dataframe)
-top_drugs = drug_df[drug_df[&#39;drug_name&#39;].isin(top_25.index)]
-# for verification sql method says there are 1683795 rows
-print(&amp;quot;Does Pandas version match SQL results:&amp;quot;, top_drugs.shape[0] == 1683795)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from bokeh.charts import BoxPlot, output_file, show
-from bokeh.sampledata.autompg import autompg as df
-from bokeh.charts import defaults
-defaults.width = 900
-defaults.height = 900
-p = BoxPlot(top_drugs,
-            values=&#39;duration&#39;,      # y axis
-            label=&#39;drug_name&#39;,      # x axis
-            title=&amp;quot;Drug Duration Box Plot&amp;quot;,
-            legend=False,
+&lt;span style=&#34;color:#75715e&#34;&gt;# if we only want to look at 25 most common drugs&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# count rows grouping by drug_name&lt;/span&gt;
+size_df &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; drug_df&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;groupby(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;drug_name&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;size()
+&lt;span style=&#34;color:#75715e&#34;&gt;# sort the counted result and only return top 25&lt;/span&gt;
+top_25 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; size_df&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sort_values(ascending &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; False)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;head(&lt;span style=&#34;color:#ae81ff&#34;&gt;25&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;# for verification purposes show all rows from original dataset matching most common drug&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;#drug_df[drug_df.drug_name.str.contains(top_25.index[0]) == True]&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# only keep rows that match the top_25 pandas series (single column of a dataframe)&lt;/span&gt;
+top_drugs &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; drug_df[drug_df[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;drug_name&amp;#39;&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;isin(top_25&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;index)]
+&lt;span style=&#34;color:#75715e&#34;&gt;# for verification sql method says there are 1683795 rows&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Does Pandas version match SQL results:&amp;#34;&lt;/span&gt;, top_drugs&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;shape[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1683795&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; bokeh.charts &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; BoxPlot, output_file, show
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; bokeh.sampledata.autompg &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; autompg &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; df
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; bokeh.charts &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; defaults
+defaults&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;width &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;900&lt;/span&gt;
+defaults&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;height &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;900&lt;/span&gt;
+p &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; BoxPlot(top_drugs,
+            values&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;duration&amp;#39;&lt;/span&gt;,      &lt;span style=&#34;color:#75715e&#34;&gt;# y axis&lt;/span&gt;
+            label&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;drug_name&amp;#39;&lt;/span&gt;,      &lt;span style=&#34;color:#75715e&#34;&gt;# x axis&lt;/span&gt;
+            title&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Drug Duration Box Plot&amp;#34;&lt;/span&gt;,
+            legend&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;False,
            )
-p.xaxis.axis_label = &amp;quot;Drug&amp;quot;
-p.yaxis.axis_label = &amp;quot;Duration (days)&amp;quot;
+p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;xaxis&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;axis_label &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Drug&amp;#34;&lt;/span&gt;
+p&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;yaxis&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;axis_label &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Duration (days)&amp;#34;&lt;/span&gt;
 
 
 show(p)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;cohort-identification-prediction&#34;&gt;Cohort identification &amp;amp; Prediction&lt;/h2&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;cohort-identification--prediction&#34;&gt;Cohort identification &amp;amp; Prediction&lt;/h2&gt;
 &lt;p&gt;Suppose we want to do some analysis including prediction for patients that complain of lower back pain (SNOMED code 279039007 - see &lt;a href=&#34;http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&amp;amp;conceptid=279039007&#34;&gt;http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&amp;amp;conceptid=279039007&lt;/a&gt; or &lt;a href=&#34;https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&amp;amp;code=279039007&#34;&gt;https://phinvads.cdc.gov/vads/http:/phinvads.cdc.gov/vads/ViewCodeSystemConcept.action?oid=2.16.840.1.113883.6.96&amp;amp;code=279039007&lt;/a&gt; for more information)&lt;/p&gt;
-
 &lt;p&gt;The OMOP data model has &lt;a href=&#34;http://www.ohdsi.org/web/wiki/doku.php?id=documentation:cdm:condition_occurrence&#34;&gt;CONDITION_OCCURRENCE&lt;/a&gt; table to document findings. The &lt;a href=&#34;http://www.ohdsi.org/web/wiki/doku.php?id=documentation:cdm:condition_era&#34;&gt;CONDITION_ERA&lt;/a&gt; table is a calculation of a condition duration.&lt;/p&gt;
-
 &lt;p&gt;While there are many elements that we could use for predicting condition duration, suppose we start with basic demographic information about the patient. Here&amp;rsquo;s a query that creates a pandas dataframe with our desired cohort.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;backpain_df &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; read_data(
+&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;SELECT
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  c.person_id,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  gender_concept_id,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  year_of_birth,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  race_concept_id,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  ethnicity_concept_id,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  location_id,
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  DATE_DIFF(CAST(condition_era_end_date AS date), CAST(condition_era_start_date AS date), day) AS duration
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;FROM
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  synpuf_omop.condition_era c
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;LEFT JOIN
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  synpuf_omop.person p
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;ON
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  c.person_id = p.person_id
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;WHERE
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;  condition_concept_id = 194133
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# View summary information about dataset&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(backpain_df&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;describe()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;to_string())
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;backpain_df = read_data(
-&#39;&#39;&#39;
-SELECT
-  c.person_id,
-  gender_concept_id,
-  year_of_birth,
-  race_concept_id,
-  ethnicity_concept_id,
-  location_id,
-  DATE_DIFF(CAST(condition_era_end_date AS date), CAST(condition_era_start_date AS date), day) AS duration
-FROM
-  synpuf_omop.condition_era c
-LEFT JOIN
-  synpuf_omop.person p
-ON
-  c.person_id = p.person_id
-WHERE
-  condition_concept_id = 194133
-&#39;&#39;&#39;)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# prevent wrapping when printing the full dataframe&lt;/span&gt;
+pandas&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_option(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;display.expand_frame_repr&amp;#39;&lt;/span&gt;, False)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(backpain_df)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;bf &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; backpain_df&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;copy()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Most of the data in this dataset is categorical, so need to use dummy encoding on each categorical column&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# so that regression will work correctly. Here&amp;#39;s the categorical columns:&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;#   gender_concept_id     (binary)&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;#   race_concept_id       (multiple categories)&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;#   ethnicity_concept_id  (binary)&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;#   location_id           (multiple categories)&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# can&amp;#39;t do them all at once - so step through one at a time&lt;/span&gt;
+bf &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pandas&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_dummies(bf, columns&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;gender_concept_id&amp;#39;&lt;/span&gt;], drop_first&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;True)
+bf &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pandas&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_dummies(bf, columns&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;race_concept_id&amp;#39;&lt;/span&gt;], drop_first&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;True)
+bf &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pandas&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_dummies(bf, columns&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ethnicity_concept_id&amp;#39;&lt;/span&gt;], drop_first&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;True)
+bf &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pandas&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_dummies(bf, columns&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;location_id&amp;#39;&lt;/span&gt;], drop_first&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;True)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(bf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;head())
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# only run this cell if previous results look correct&lt;/span&gt;
+backpain_df &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; bf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;copy()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(backpain_df&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;head())
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# divide data into independent and dependent variables&lt;/span&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# View summary information about dataset
-print(backpain_df.describe().to_string())
+&lt;span style=&#34;color:#75715e&#34;&gt;# exclude person_id and duration from independent variables&lt;/span&gt;
+input_df &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; backpain_df&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;drop([&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;person_id&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;duration&amp;#39;&lt;/span&gt;], axis&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
 
-# prevent wrapping when printing the full dataframe
-pandas.set_option(&#39;display.expand_frame_repr&#39;, False)
-print(backpain_df)
-&lt;/code&gt;&lt;/pre&gt;
+output_df &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; backpain_df[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;duration&amp;#39;&lt;/span&gt;]
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;bf = backpain_df.copy()
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# split data into training vs testing dataset&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.model_selection &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; train_test_split
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Most of the data in this dataset is categorical, so need to use dummy encoding on each categorical column
-# so that regression will work correctly. Here&#39;s the categorical columns:
-#   gender_concept_id     (binary)
-#   race_concept_id       (multiple categories)
-#   ethnicity_concept_id  (binary)
-#   location_id           (multiple categories)
-#
-# can&#39;t do them all at once - so step through one at a time
-bf = pandas.get_dummies(bf, columns=[&#39;gender_concept_id&#39;], drop_first=True)
-bf = pandas.get_dummies(bf, columns=[&#39;race_concept_id&#39;], drop_first=True)
-bf = pandas.get_dummies(bf, columns=[&#39;ethnicity_concept_id&#39;], drop_first=True)
-bf = pandas.get_dummies(bf, columns=[&#39;location_id&#39;], drop_first=True)
-print(bf.head())
-&lt;/code&gt;&lt;/pre&gt;
+input_train, input_test, output_train, output_test &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; train_test_split(input_df, output_df, test_size &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0.2&lt;/span&gt;, random_state &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# now generate linear regression model on training data&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.linear_model &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; LinearRegression
+lm &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; LinearRegression()
+lm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;fit(input_train, output_train)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# print intercept and coefficients&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Intercept: &amp;#34;&lt;/span&gt;, lm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;intercept_)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Coefficients: &amp;#34;&lt;/span&gt;, lm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;coef_)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R^2 value: &amp;#34;&lt;/span&gt;, lm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;score(input_train, output_train))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For a brief explaination of what R&lt;!-- raw HTML omitted --&gt;2&lt;!-- raw HTML omitted --&gt; means, see &lt;a href=&#34;http://blog.minitab.com/blog/adventures-in-statistics-2/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit&#34;&gt;http://blog.minitab.com/blog/adventures-in-statistics-2/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In general, the closer R&lt;!-- raw HTML omitted --&gt;2&lt;!-- raw HTML omitted --&gt; is to 1, the better the model explains variation in data. Plotting or visualizing data along with the predictive model helps to visually understand how close they are to each other.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# now evaluate model on test data&lt;/span&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# only run this cell if previous results look correct
-backpain_df = bf.copy()
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# now predict answers (regression) - since we only care about whole days, round all output to whole numbers&lt;/span&gt;
+output_pred &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pandas&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Series(data&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;lm&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;predict(input_test))
+output_pred &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; output_pred&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;round()
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(backpain_df.head())
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# divide data into independent and dependent variables
-
-# exclude person_id and duration from independent variables
-input_df = backpain_df.drop([&#39;person_id&#39;, &#39;duration&#39;], axis=1)
-
-output_df = backpain_df[&#39;duration&#39;]
-
-# split data into training vs testing dataset
-from sklearn.model_selection import train_test_split
-
-input_train, input_test, output_train, output_test = train_test_split(input_df, output_df, test_size = 0.2, random_state = 0)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# now generate linear regression model on training data
-from sklearn.linear_model import LinearRegression
-lm = LinearRegression()
-lm.fit(input_train, output_train)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# print intercept and coefficients
-print(&amp;quot;Intercept: &amp;quot;, lm.intercept_)
-print(&amp;quot;Coefficients: &amp;quot;, lm.coef_)
-print(&amp;quot;R^2 value: &amp;quot;, lm.score(input_train, output_train))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;For a brief explaination of what R&lt;sup&gt;2&lt;/sup&gt; means, see &lt;a href=&#34;http://blog.minitab.com/blog/adventures-in-statistics-2/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit&#34;&gt;http://blog.minitab.com/blog/adventures-in-statistics-2/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;In general, the closer R&lt;sup&gt;2&lt;/sup&gt; is to 1, the better the model explains variation in data. Plotting or visualizing data along with the predictive model helps to visually understand how close they are to each other.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# now evaluate model on test data
-
-# now predict answers (regression) - since we only care about whole days, round all output to whole numbers
-output_pred = pandas.Series(data=lm.predict(input_test))
-output_pred = output_pred.round()
-
-for index, value in output_pred.iteritems():
-    print(&#39;Real value: &#39;, output_test.values[index], &#39;Predicted value: &#39;, value)
-    if index &amp;gt;= 10:
-        break
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; index, value &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; output_pred&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;iteritems():
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Real value: &amp;#39;&lt;/span&gt;, output_test&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;values[index], &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Predicted value: &amp;#39;&lt;/span&gt;, value)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; index &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;
         
-# should next calculate various measures such as precision, recall, etc. 
-# See https://stackoverflow.com/questions/31421413/how-to-compute-precision-recall-accuracy-and-f1-score-for-the-multiclass-case
-# for some examples.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;final-notes&#34;&gt;Final notes&lt;/h2&gt;
-
+&lt;span style=&#34;color:#75715e&#34;&gt;# should next calculate various measures such as precision, recall, etc. &lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# See https://stackoverflow.com/questions/31421413/how-to-compute-precision-recall-accuracy-and-f1-score-for-the-multiclass-case&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# for some examples.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;final-notes&#34;&gt;Final notes&lt;/h2&gt;
 &lt;p&gt;In order to decide which variables are meaningful in the model, methods such as back-propigation, forward-propigation or similar methods should be used.&lt;/p&gt;
-
 &lt;p&gt;Additionally, other regression methods may work better for predicting duration - in fact the data may not even be suited for Linear Regression. In order for Linear Regression to work, certain assumptions about the data must be true. For more information see: &lt;a href=&#34;http://pareonline.net/getvn.asp?n=2&amp;amp;v=8&#34;&gt;http://pareonline.net/getvn.asp?n=2&amp;amp;v=8&lt;/a&gt;&lt;/p&gt;
-
 &lt;p&gt;Also, since this data set has other elements, the inclusion of other factors may help in predicting condition duration.&lt;/p&gt;
 </description>
     </item>
