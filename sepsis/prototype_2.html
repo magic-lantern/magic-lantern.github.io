@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    /* Basic styling for the table */
+    table {
+      border-collapse: collapse;
+      width: 50%;
+    }
+    td {
+      padding: 10px;
+      text-align: center;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .parent {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    .sil {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    .shock {
+      position: absolute;
+      width: 25%;
+      top: 150px;
+      left: 120px;
+      /* red */
+      filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+      
+      /*
+      green
+      filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
+      */
+    }
+    .material-symbols-outlined {
+      position: absolute;
+      z-index: 1;
+      font-size: 3.5em;
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24,
+      'wght' 500
+    }
+    .hg {
+      color: grey;
+      top: 480px;
+      left: 447px;
+    }
+    .cl {
+      color: green;
+      top: 480px;
+      left: 140px;
+    }
+    .mb {
+      color: red;
+      top: 155px;
+      left: 130px;
+    }
+    .mbs {
+      color: red;
+      top: 155px;
+      left: 110px;
+    }
+    .eb {
+      color: red;
+      top: 155px;
+      left: 150px;
+    }
+  </style>
+  
+  
+</style>
+</head>
+<body>
+  <table>
+    <tr>
+      <td class="parent">
+        <img src="GHS-silhouette-only.svg" alt="Sepsis Pictogram">
+        <span class="material-symbols-outlined mb">microbiology</span>
+      </td>
+      <td class="parent">
+        <img class="sil" src="GHS-silhouette-only.svg" alt="Sepsis + Shock Pictogram">
+        <!--  <img class="shock" src="https://healthicons.org/icons/svg/outline/conditions/pain.svg"> -->
+        <!-- <img class="shock" src="https://healthicons.org/icons/svg/outline/conditions/pain.svg"> -->
+        <span class="material-symbols-outlined mbs">microbiology</span>
+        <span class="material-symbols-outlined eb">electric_bolt</span>
+        <!-- <img class="shock"src="https://healthicons.org/icons/svg/filled/conditions/pain.svg"> -->
+      </td>
+    </tr>
+    <tr>
+      <td class="parent">
+        <img src="GHS-silhouette-only.svg" alt="Healthy Pictogram"></td>
+        <span class="material-symbols-outlined cl">checklist</span>
+      <td class="parent">
+        <img src="GHS-silhouette-only.svg" alt="Indeterminate Pictogram"></td>
+        <span class="material-symbols-outlined hg">hourglass</span>
+    </tr>
+  </table>
+</body>
+</html>
