@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    /* Basic styling for the table */
+    table {
+      border-collapse: collapse;
+      width: 620px;
+    }
+    td {
+      padding: 10px;
+      text-align: center;
+    }
+    img {
+      max-width: 300px;
+      height: auto;
+    }
+    li {
+      font-size: 1.2em;
+    }
+    .parent {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    .sil {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    .shock {
+      position: absolute;
+      width: 25%;
+      top: 150px;
+      left: 120px;
+      /* red */
+      filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+      
+      /*
+      green
+      filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
+      */
+    }
+    .material-symbols-outlined {
+      vertical-align: -.2em;
+      position: relative;
+      z-index: 1;
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24,
+      'wght' 500
+    }
+    .dbd {
+      top: -28px;
+      left: -35px;
+    }
+    .scb1 {
+      color: white;
+      top: -138px;
+      left: -65px;
+    }
+    .scb2 {
+      color: white;
+      top: -101px;
+      left: -93px;
+    }
+    .scb3 {
+      color: blue;
+      top: -64px;
+      left: -120px;
+    }
+  </style>
+  
+  
+</style>
+</head>
+<body>
+  <img src="Coagulation_NotDone.png" />
+  <br />
+  <br />
+  <div class="edited">
+    <img src="Coagulation_NotDone_edited.png" />
+    <span class="material-symbols-outlined dbd">disabled_by_default</span>
+    <span class="material-symbols-outlined scb1">select_check_box</span></li>
+    <span class="material-symbols-outlined scb2">select_check_box</span></li>
+    <span class="material-symbols-outlined scb3">select_check_box</span></li>
+    <div>
+      Candidate icons:
+      <ul>
+        <li>Pair not available/available: <span class="material-symbols-outlined">disabled_by_default</span> <span class="material-symbols-outlined">select_check_box</span></li>
+        <li>Not available: <span class="material-symbols-outlined">do_not_disturb_on_total_silence</span></li>
+        <li>Not available: <span class="material-symbols-outlined">indeterminate_check_box</span></li>
+        <li>Not available: <span class="material-symbols-outlined">block</span></li>
+        <li>Pair not available/available: <span class="material-symbols-outlined">cancel</span> <span class="material-symbols-outlined">check_circle</span></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
